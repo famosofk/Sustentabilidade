@@ -19,10 +19,7 @@ class LoginViewModel : ViewModel() {
                 if (task.isSuccessful) {
                     user.value = true
                     Log.e("sucesso", "aqui")
-                } else {
-
                 }
-
             }
     }
 
