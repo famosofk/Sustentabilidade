@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Sustainability</string>
+    <string name="login_intro_message">LOGIN</string>
+    <string name="email_address">Endereço de e-mail</string>
+    <string name="senha_intro_message">Senha</string>
+    <string name="login_message">Entrar</string>
+    <string name="cadastrar_intro_message">Cadastrar</string>
+    <string name="logo_description">Agroplus logo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register_intro_message">Registro</string>
+    <string name="account_type_message_intro">Tipo de conta</string>
+    <string name="senha_agroplus">Senha membro AgroPlus</string>
+    <string name="agroplus_account_message">Não tem conta AgroPlus?</string>
+    <string name="sign_up_message">Cadastre-se.</string>
+    <string name="forgot_your_password_intro_message">Esqueceu sua senha?</string>
+    <string name="consultant_term">Consultor</string>
+    <string name="productor_term">Produtor</string>
+    <string name="professor_term">Professor</string>
+    <string name="save_term">Salvar</string>
+</resources>
