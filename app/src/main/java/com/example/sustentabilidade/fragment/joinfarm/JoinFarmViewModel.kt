@@ -9,12 +9,18 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import io.realm.Realm
 
 class JoinFarmViewModel : ViewModel() {
     var list = listOf<Farm>()
     private var farms = MutableLiveData(false)
     val mFarms: LiveData<Boolean>
         get() = farms
+
+    private var navigation = MutableLiveData(false)
+    val mNavigation: LiveData<Boolean>
+        get() = navigation
+
 
     fun getFarms(program: String) {
         val db = Firebase.database.reference.child("fazendas").child(program)
@@ -33,6 +39,14 @@ class JoinFarmViewModel : ViewModel() {
         }
         db.addListenerForSingleValueEvent(listener)
 
+    }
+
+    fun copyFarmToDevice(pos: Int) {
+        val realm = Realm.getDefaultInstance()
+        realm.beginTransaction()
+        realm.copyToRealm(list[pos])
+        realm.commitTransaction()
+        navigation.value = true
     }
 
 

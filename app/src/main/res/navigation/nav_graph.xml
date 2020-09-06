@@ -80,7 +80,11 @@
         android:id="@+id/joinFarmFragment"
         android:name="com.example.sustentabilidade.fragment.joinfarm.JoinFarmFragment"
         android:label="join_farm_fragment"
-        tools:layout="@layout/join_farm_fragment" />
+        tools:layout="@layout/join_farm_fragment">
+        <action
+            android:id="@+id/action_joinFarmFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/selectProgramFragment"
         android:name="com.example.sustentabilidade.fragment.selectprogram.SelectProgramFragment"
