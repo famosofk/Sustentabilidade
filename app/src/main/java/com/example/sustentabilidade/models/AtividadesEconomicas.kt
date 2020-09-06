@@ -5,25 +5,25 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import io.realm.RealmList
 
-open class AtividadesEconomicas(var nome: String = "") {
+class AtividadesEconomicas(var nome: String = "") {
 
-    private var fazendaID: String = ""
-    private var rateio: Double = 1.0
-    private var custoDeProducao: Double = 0.0
-    private var vendasAtividade: Double = 0.0
-    private var arrayCustos =
-        RealmList<Double>(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
-    private var custoSemente = 0.0
-    private var custoFertilizante = 0.0
-    private var custoDefensivo = 0.0
-    private var custoMaodeobra = 0.0
-    private var custoMaquina = 0.0
-    private var custoOutros = 0.0
-    private var modificacao: String = ""
+    var fazendaID: String = ""
+    var rateio: Double = 1.0
+    var custoDeProducao: Double = 0.0
+    var vendasAtividade: Double = 0.0
+    var arrayCustos = RealmList<Double>(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+
+    var custoSemente = 0.0
+    var custoFertilizante = 0.0
+    var custoDefensivo = 0.0
+    var custoMaodeobra = 0.0
+    var custoMaquina = 0.0
+    var custoOutros = 0.0
+    var modificacao: String = "1"
 
     fun saveToDb() {
         val database = Firebase.database
-        val db = database.reference.child("atividadeEconomica").child(this.fazendaID)
+        val db = database.reference.child("atividadesEconomicas").child(this.fazendaID).child(nome)
         db.setValue(this)
     }
 

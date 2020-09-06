@@ -7,7 +7,6 @@ import com.example.sustentabilidade.models.Program
 import io.realm.Realm
 
 class CreateProgramViewModel : ViewModel() {
-
     private var navigation = MutableLiveData(false)
     val mNavigation: LiveData<Boolean>
         get() = navigation

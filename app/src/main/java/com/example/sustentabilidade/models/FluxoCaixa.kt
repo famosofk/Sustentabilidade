@@ -5,12 +5,12 @@ import com.google.firebase.ktx.Firebase
 
 open class FluxoCaixa {
 
-    private var farmID = ""
-    private var modificacao: String = ""
+    var farmID = ""
+    var modificacao: String = "1"
 
     fun saveToDb() {
         val database = Firebase.database
-        val db = database.reference.child("fluxoCaixa").child(this.farmID)
+        val db = database.reference.child("fluxoCaixa").child(farmID)
         db.setValue(this)
     }
 

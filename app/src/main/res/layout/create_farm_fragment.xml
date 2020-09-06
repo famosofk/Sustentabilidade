@@ -36,10 +36,10 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/selectFarmProgramTextView"
                 style="@style/edittext_title"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
+                android:text="@string/select_program_intro"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,46 +49,46 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView4" />
+                app:layout_constraintTop_toBottomOf="@id/selectFarmProgramTextView" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/nameCreateFarm"
                 style="@style/edittext_title"
                 android:layout_marginTop="16dp"
-                android:text="TextView"
+                android:text="@string/name_create_farm_intro_message"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/spinner" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/farmNameEditText"
                 style="@style/editText_style"
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView5" />
+                app:layout_constraintTop_toBottomOf="@id/nameCreateFarm" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/passwordCreateFarmTextView"
                 style="@style/edittext_title"
                 android:layout_marginTop="16dp"
-                android:text="TextView"
+                android:text="@string/password_farm_message_intro"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editTextTextPersonName" />
+                app:layout_constraintTop_toBottomOf="@id/farmNameEditText" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/farmPasswordEditText"
                 style="@style/editText_style"
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView6" />
+                app:layout_constraintTop_toBottomOf="@id/passwordCreateFarmTextView" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/createFarmButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -98,7 +98,7 @@
                 android:textColor="@color/colorBackground"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editTextTextPersonName2" />
+                app:layout_constraintTop_toBottomOf="@id/farmPasswordEditText" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

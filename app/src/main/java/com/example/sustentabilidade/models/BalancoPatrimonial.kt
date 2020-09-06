@@ -5,37 +5,37 @@ import com.google.firebase.ktx.Firebase
 
 open class BalancoPatrimonial {
 
-    fun saveToDb() {
-        val database = Firebase.database
-        val db = database.reference.child("balancoPatrimonial").child(this.farmID)
-        db.setValue(this)
-    }
+ fun saveToDb() {
+  val database = Firebase.database
+  val db = database.reference.child("balancoPatrimonial").child(farmID)
+  db.setValue(this)
+ }
 
-    private var farmID = ""
-    private var liquidezGeral = "0.00"
-    private var liquidezCorrente = "0.00"
-    private var margemLiquida = "0.00"
-    private var margemBruta = "0.00"
-    private var taxaRemuneracaoCapital = "0.06"
-    private var receitaBruta = "0.00"
-    private var custoOperacionalEfetivo = "0.00"
-    private var custoOperacionalTotal = "0.00"
-    private var totalDespesas = "0.00"
-    private var totalReceitas = "0.00"
-    private var ativo = "0.00"
-    private var passivo = "0.00"
-    private var patrimonioLiquido = "0.00"
-    private var rentabilidade = "0.00"
-    private var lucro = "0.00"
-    private var saldo = "0.00"
-    private var dividasLongoPrazo = "0.00"
-    private var dinheiroBanco = "0.00"
-    private var custoOportunidadeTrabalho = "0.00"
-    private var trabalhoFamiliarNaoRemunerado = "0.00"
-    private var pendenciasPagamento = "0.00"
-    private var pendenciasRecebimento = "0.00"
-    private var totalContasPagar = "0.00"
-    private var totalContasReceber = "0.00"
-    private var modificacao: String = ""
+ var farmID = ""
+ var liquidezGeral = "0.00"
+ var liquidezCorrente = "0.00"
+ var margemLiquida = "0.00"
+ var margemBruta = "0.00"
+ var taxaRemuneracaoCapital = "0.06"
+ var receitaBruta = "0.00"
+ var custoOperacionalEfetivo = "0.00"
+ var custoOperacionalTotal = "0.00"
+ var totalDespesas = "0.00"
+ var totalReceitas = "0.00"
+ var ativo = "0.00"
+ var passivo = "0.00"
+ var patrimonioLiquido = "0.00"
+ var rentabilidade = "0.00"
+ var lucro = "0.00"
+ var saldo = "0.00"
+ var dividasLongoPrazo = "0.00"
+ var dinheiroBanco = "0.00"
+ var custoOportunidadeTrabalho = "0.00"
+ var trabalhoFamiliarNaoRemunerado = "0.00"
+ var pendenciasPagamento = "0.00"
+ var pendenciasRecebimento = "0.00"
+ var totalContasPagar = "0.00"
+ var totalContasReceber = "0.00"
+ var modificacao: String = "1"
 
 }
