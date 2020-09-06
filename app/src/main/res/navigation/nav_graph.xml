@@ -62,12 +62,20 @@
         android:id="@+id/createFarmFragment"
         android:name="com.example.sustentabilidade.fragment.createfarm.CreateFarmFragment"
         android:label="create_farm_fragment"
-        tools:layout="@layout/create_farm_fragment" />
+        tools:layout="@layout/create_farm_fragment">
+        <action
+            android:id="@+id/action_createFarmFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createProgramFragment"
         android:name="com.example.sustentabilidade.fragment.createprogram.CreateProgramFragment"
         android:label="create_program_fragment"
-        tools:layout="@layout/create_program_fragment" />
+        tools:layout="@layout/create_program_fragment">
+        <action
+            android:id="@+id/action_createProgramFragment_to_farmsFragment"
+            app:destination="@id/farmsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/joinFarmFragment"
         android:name="com.example.sustentabilidade.fragment.joinfarm.JoinFarmFragment"

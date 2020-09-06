@@ -19,4 +19,5 @@
     <string name="professor_term">Professor</string>
     <string name="save_term">Salvar</string>
     <string name="create_program_intro">Criar Programa</string>
+    <string name="create_farm_intro">Criar Fazenda</string>
 </resources>

@@ -4,9 +4,8 @@ package com.example.sustentabilidade.models
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import io.realm.RealmList
-import io.realm.RealmObject
 
-open class AtividadesEconomicas(var nome: String = "") : RealmObject() {
+open class AtividadesEconomicas(var nome: String = "") {
 
     private var fazendaID: String = ""
     private var rateio: Double = 1.0

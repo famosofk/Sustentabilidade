@@ -2,9 +2,8 @@ package com.example.sustentabilidade.models
 
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import io.realm.RealmObject
 
-open class FluxoCaixa : RealmObject() {
+open class FluxoCaixa {
 
     private var farmID = ""
     private var modificacao: String = ""
