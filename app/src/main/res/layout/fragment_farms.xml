@@ -3,12 +3,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background"
-        tools:context=".fragment.main.MainFragment">
+        android:background="@drawable/farm"
+        tools:context=".fragment.farms.FarmsFragment">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,35 +17,51 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/textViewCertificationNavigation"
+                android:id="@+id/createProgramNavigation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat"
                 android:gravity="center"
-                android:text="Certificações"
+                android:text="Criar Programa"
                 android:textColor="@android:color/white"
-                android:textSize="56sp" />
+                android:textSize="32sp" />
 
             <View
-                android:id="@+id/divider5"
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
                 android:background="?android:attr/listDivider"
                 android:backgroundTint="@android:color/white" />
 
             <TextView
-                android:id="@+id/textViewFarmNavigation"
+                android:id="@+id/createFarmNavigation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat"
                 android:gravity="center"
-                android:text="Fazendas"
+                android:text="Criar Fazenda"
                 android:textColor="@android:color/white"
-                android:textSize="56sp" />
+                android:textSize="32sp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="?android:attr/listDivider"
+                android:backgroundTint="@android:color/white" />
+
+            <TextView
+                android:id="@+id/joinFarmNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="Participar Fazenda"
+                android:textColor="@android:color/white"
+                android:textSize="32sp" />
         </LinearLayout>
     </FrameLayout>
+
 
 </layout>

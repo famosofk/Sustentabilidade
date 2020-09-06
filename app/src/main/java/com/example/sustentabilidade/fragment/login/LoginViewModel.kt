@@ -1,16 +1,22 @@
 package com.example.sustentabilidade.fragment.login
 
 import android.app.Activity
-import android.util.Log
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel(application: Application) : AndroidViewModel(application) {
     private var user = MutableLiveData(false)
     val mUser: MutableLiveData<Boolean>
         get() = user
     private val mAuth = FirebaseAuth.getInstance()
+
+    init {
+        if (mAuth.currentUser != null) {
+            user.value = true
+        }
+    }
 
 
     fun signIn(activity: Activity, email: String, password: String) {
@@ -18,7 +24,6 @@ class LoginViewModel : ViewModel() {
             .addOnCompleteListener(activity) { task ->
                 if (task.isSuccessful) {
                     user.value = true
-                    Log.e("sucesso", "aqui")
                 }
             }
     }

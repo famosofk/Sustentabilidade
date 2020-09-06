@@ -21,7 +21,14 @@
         android:id="@+id/mainFragment"
         android:name="com.example.sustentabilidade.fragment.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_farmsFragment"
+            app:destination="@id/farmsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_certificationsFragment"
+            app:destination="@id/certificationsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.sustentabilidade.fragment.register.RegisterFragment"
@@ -30,5 +37,49 @@
         <action
             android:id="@+id/action_registerFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/farmsFragment"
+        android:name="com.example.sustentabilidade.fragment.farms.FarmsFragment"
+        android:label="fragment_farms"
+        tools:layout="@layout/fragment_farms">
+        <action
+            android:id="@+id/action_farmsFragment_to_createFarmFragment"
+            app:destination="@id/createFarmFragment" />
+        <action
+            android:id="@+id/action_farmsFragment_to_createProgramFragment"
+            app:destination="@id/createProgramFragment" />
+        <action
+            android:id="@+id/action_farmsFragment_to_selectProgramFragment"
+            app:destination="@id/selectProgramFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/certificationsFragment"
+        android:name="com.example.sustentabilidade.fragment.certification.CertificationsFragment"
+        android:label="fragment_certifications"
+        tools:layout="@layout/fragment_certifications" />
+    <fragment
+        android:id="@+id/createFarmFragment"
+        android:name="com.example.sustentabilidade.fragment.createfarm.CreateFarmFragment"
+        android:label="create_farm_fragment"
+        tools:layout="@layout/create_farm_fragment" />
+    <fragment
+        android:id="@+id/createProgramFragment"
+        android:name="com.example.sustentabilidade.fragment.createprogram.CreateProgramFragment"
+        android:label="create_program_fragment"
+        tools:layout="@layout/create_program_fragment" />
+    <fragment
+        android:id="@+id/joinFarmFragment"
+        android:name="com.example.sustentabilidade.fragment.joinfarm.JoinFarmFragment"
+        android:label="join_farm_fragment"
+        tools:layout="@layout/join_farm_fragment" />
+    <fragment
+        android:id="@+id/selectProgramFragment"
+        android:name="com.example.sustentabilidade.fragment.selectprogram.SelectProgramFragment"
+        android:label="select_program_fragment"
+        tools:layout="@layout/select_program_fragment">
+        <action
+            android:id="@+id/action_selectProgramFragment_to_joinFarmFragment"
+            app:destination="@id/joinFarmFragment" />
     </fragment>
 </navigation>

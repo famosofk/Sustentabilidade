@@ -23,9 +23,10 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val bind: FragmentLoginBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
+        val app = requireActivity().application
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         binding = bind
         setListeners()
         setObservers()
@@ -34,14 +35,6 @@ class LoginFragment : Fragment() {
     }
 
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
 
     private fun setObservers() {
         viewModel.mUser.observe(viewLifecycleOwner, Observer {
@@ -53,7 +46,6 @@ class LoginFragment : Fragment() {
 
     private fun setListeners() {
         binding.buttonLogin.setOnClickListener {
-
             callUserSignIn()
         }
         binding.cadastroLinearLayout.setOnClickListener {

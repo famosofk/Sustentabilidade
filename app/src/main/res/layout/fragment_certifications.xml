@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/certificate"
+    tools:context=".fragment.certification.CertificationsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_blue_green"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/textView82"
+            style="@style/textview_title"
+            android:text="Certificações" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="?android:attr/listDivider"
+            android:backgroundTint="@android:color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/textView80"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="Criar"
+                android:textColor="@android:color/white"
+                android:textSize="32sp" />
+
+            <View
+                android:id="@+id/divider6"
+                android:layout_width="4dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/listDivider"
+                android:backgroundTint="@android:color/white" />
+
+            <TextView
+                android:id="@+id/textView81"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="Aplicar"
+                android:textColor="@android:color/white"
+                android:textSize="32sp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="?android:attr/listDivider"
+            android:backgroundTint="@android:color/white" />
+
+        <TextView
+            android:id="@+id/textView85"
+            style="@style/textview_title"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="Consultar" />
+
+    </LinearLayout>
+</FrameLayout>

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
@@ -27,24 +27,27 @@ class RegisterFragment : Fragment() {
         val bind: FragmentRegisterBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false)
         binding = bind
+        viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
+        //tentar usar uma factory pra ver se funciona
         createListeners()
+        createObservers()
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
+
     }
 
 
     private fun createObservers() {
-        viewModel.error.observe(viewLifecycleOwner, Observer {
+        viewModel.error.observe(viewLifecycleOwner, {
             if (it) {
                 createToasts(viewModel.errorCode)
             }
         })
 
-        viewModel.mUser.observe(viewLifecycleOwner, Observer {
+        viewModel.mUser.observe(viewLifecycleOwner, {
             if (it) {
                 binding.root.findNavController()
                     .navigate(R.id.action_registerFragment_to_mainFragment)

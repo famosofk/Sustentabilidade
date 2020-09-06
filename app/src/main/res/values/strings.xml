@@ -18,4 +18,5 @@
     <string name="productor_term">Produtor</string>
     <string name="professor_term">Professor</string>
     <string name="save_term">Salvar</string>
+    <string name="create_program_intro">Criar Programa</string>
 </resources>

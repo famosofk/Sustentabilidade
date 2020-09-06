@@ -68,12 +68,12 @@
 
             <EditText
                 android:id="@+id/userEmailLogin"
+                style="@style/editText_style"
+                android:autofillHints="No"
                 android:inputType="textWebEmailAddress"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewEmailIntroMessage"
-                style="@style/editText_style"
-                android:autofillHints="No"
                 tools:ignore="LabelFor" />
 
             <TextView
@@ -88,10 +88,7 @@
 
             <EditText
                 android:id="@+id/userPassWordLogin"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:background="@drawable/login_shape_background"
-                android:ems="10"
+                style="@style/editText_style"
                 android:inputType="textWebPassword"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
