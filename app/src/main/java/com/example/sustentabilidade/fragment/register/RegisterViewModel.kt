@@ -16,22 +16,35 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     var errorCode = ""
 
 
-    fun createUser(email: String, password: String, type: String) {
+    fun createUser(email: String, password: String, agroplus: String, type: String) {
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                val profileUpdates = UserProfileChangeRequest.Builder()
-                    .setDisplayName(type).build()
-                val user = mAuth.currentUser
-                user?.updateProfile(profileUpdates)?.addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        changeUserState()
+        var proceed = false
+
+        when (type) {
+            "Produtor" -> proceed = true
+            "Consultor" -> if (agroplus.equals("244466666")) proceed = true
+            "Professor" -> if (agroplus.equals("senhaprofessor")) proceed = true
+        }
+
+        if (proceed) {
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val profileUpdates = UserProfileChangeRequest.Builder()
+                        .setDisplayName(type).build()
+                    val user = mAuth.currentUser
+                    user?.updateProfile(profileUpdates)?.addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            changeUserState()
+                        }
                     }
+                } else {
+                    errorCode = task.exception.toString().split(':')[1]
+                    changeErrorCode()
                 }
-            } else {
-                errorCode = task.exception.toString()
-                changeErrorCode()
             }
+        } else {
+            errorCode = "Senha incorreta"
+            changeErrorCode()
         }
 
     }
@@ -42,6 +55,10 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
 
     private fun changeErrorCode() {
         error.value = true
+    }
+
+    fun resetErrrorCode() {
+        error.value = false
     }
 
 

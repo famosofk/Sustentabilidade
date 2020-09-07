@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.FragmentLoginBinding
+import com.example.sustentabilidade.helpers.ScreenHelper
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment() {
@@ -23,11 +25,8 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val bind: FragmentLoginBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
-        val app = requireActivity().application
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        binding = bind
         setListeners()
         setObservers()
 
@@ -42,6 +41,14 @@ class LoginFragment : Fragment() {
                 binding.root.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
             }
         })
+        viewModel.error.observe(viewLifecycleOwner, {
+            if (it) {
+                Toast.makeText(context, viewModel.errorMessage, Toast.LENGTH_SHORT).show()
+                manageProgressBar()
+                viewModel.resetError()
+
+            }
+        })
     }
 
     private fun setListeners() {
@@ -53,8 +60,23 @@ class LoginFragment : Fragment() {
         }
     }
 
+    private fun manageProgressBar() {
+        if (binding.progressBar.visibility == View.VISIBLE) {
+            binding.progressBar.visibility = View.GONE
+            ScreenHelper.disableLoading(requireActivity())
+        } else {
+            binding.progressBar.visibility = View.VISIBLE
+            ScreenHelper.disableLoading(requireActivity())
+        }
+    }
+
     private fun callUserSignIn() {
-        viewModel.signIn(requireActivity(), userEmailLogin.text.toString(), userPassWordLogin.text.toString())
+        manageProgressBar()
+        viewModel.signIn(
+            requireActivity(),
+            userEmailLogin.text.toString(),
+            userPassWordLogin.text.toString()
+        )
     }
 
 }

@@ -22,7 +22,6 @@ private const val ARG_PARAM2 = "param2"
  */
 class MainFragment : Fragment() {
 
-    private lateinit var binding: FragmentMainBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,14 +29,13 @@ class MainFragment : Fragment() {
     ): View? {
         val bind: FragmentMainBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
-        binding = bind
 
-        enableNavigation()
+        enableNavigation(bind)
 
-        return binding.root
+        return bind.root
     }
 
-    private fun enableNavigation() {
+    private fun enableNavigation(binding: FragmentMainBinding) {
 
         binding.textViewCertificationNavigation.setOnClickListener {
             binding.root.findNavController()

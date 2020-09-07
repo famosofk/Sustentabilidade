@@ -10,6 +10,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     private var user = MutableLiveData(false)
     val mUser: MutableLiveData<Boolean>
         get() = user
+    var error = MutableLiveData(false)
+    var errorMessage = ""
     private val mAuth = FirebaseAuth.getInstance()
 
     init {
@@ -24,8 +26,16 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             .addOnCompleteListener(activity) { task ->
                 if (task.isSuccessful) {
                     user.value = true
+                } else {
+
+                    error.value = true
+                    errorMessage = task.exception.toString().split(':')[1]
                 }
             }
+    }
+
+    fun resetError() {
+        error.value = false
     }
 
 }

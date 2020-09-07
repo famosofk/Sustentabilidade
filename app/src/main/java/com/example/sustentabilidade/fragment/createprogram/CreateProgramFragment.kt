@@ -13,10 +13,6 @@ import com.example.sustentabilidade.databinding.CreateProgramFragmentBinding
 
 class CreateProgramFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CreateProgramFragment()
-    }
-
     private lateinit var viewModel: CreateProgramViewModel
     private lateinit var binding: CreateProgramFragmentBinding
 

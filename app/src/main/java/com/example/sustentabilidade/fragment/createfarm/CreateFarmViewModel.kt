@@ -25,13 +25,13 @@ class CreateFarmViewModel : ViewModel() {
     }
 
     fun createFarm(name: String, pass: String, realm: Realm) {
-        var farm = Farm()
+        val farm = Farm()
         farm.codigoFazenda = name
         farm.id = UUID.randomUUID().toString()
         farm.senha = pass
-        var fluxoCaixa = FluxoCaixa()
-        var balanco = BalancoPatrimonial()
-        var atividadesEconomicas = AtividadesEconomicas("Geral")
+        val fluxoCaixa = FluxoCaixa()
+        val balanco = BalancoPatrimonial()
+        val atividadesEconomicas = AtividadesEconomicas("Geral")
         atividadesEconomicas.fazendaID = farm.id
         fluxoCaixa.farmID = farm.id
         balanco.farmID = farm.id

@@ -17,7 +17,7 @@ import com.example.sustentabilidade.helpers.ClickListener
 class SelectProgramFragment : Fragment() {
 
     private val adapter = SelectProgramAdapter()
-
+    private lateinit var binding: SelectProgramFragmentBinding
     private lateinit var viewModel: SelectProgramViewModel
 
     override fun onCreateView(
@@ -25,29 +25,31 @@ class SelectProgramFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val bind: SelectProgramFragmentBinding =
+        binding =
             DataBindingUtil.inflate(inflater, R.layout.select_program_fragment, container, false)
+        binding.lifecycleOwner = this
         viewModel = ViewModelProvider(this).get(SelectProgramViewModel::class.java)
+        attachListeners()
+        enableObservers()
+        binding.recyclerSelectProgram.adapter = adapter
+        viewModel.getPrograms()
 
+        return binding.root
+
+    }
+
+    private fun attachListeners() {
         val listener = object : ClickListener {
             override fun onClick(id: Int) {
                 val item: String = viewModel.list[id].name
                 val bundle = Bundle()
                 bundle.putString("Program", item)
                 Toast.makeText(context, item, Toast.LENGTH_SHORT).show()
-                bind.root.findNavController()
+                binding.root.findNavController()
                     .navigate(R.id.action_selectProgramFragment_to_joinFarmFragment, bundle)
             }
         }
         adapter.attachListener(listener)
-
-        bind.lifecycleOwner = this
-        enableObservers()
-        bind.recyclerSelectProgram.adapter = adapter
-        viewModel.getPrograms()
-
-        return bind.root
-
     }
 
     private fun enableObservers() {

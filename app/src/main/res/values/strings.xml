@@ -23,4 +23,7 @@
     <string name="select_program_intro">Escolha um programa</string>
     <string name="name_create_farm_intro_message">Nomeie a fazenda</string>
     <string name="password_farm_message_intro">Defina a senha</string>
+    <string name="success_saving_farm">Fazenda salva com sucesso.</string>
+    <string name="alertdialog_body_intro_message">Insira a senha para participar desta fazenda.</string>
+    <string name="alertdialog_title_intro_message">Participar de fazenda</string>
 </resources>

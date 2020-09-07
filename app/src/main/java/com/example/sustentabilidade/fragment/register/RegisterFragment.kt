@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.FragmentRegisterBinding
+import com.example.sustentabilidade.helpers.ScreenHelper
 
 class RegisterFragment : Fragment() {
 
@@ -24,25 +24,21 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val bind: FragmentRegisterBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false)
-        binding = bind
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false)
         viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
-        //tentar usar uma factory pra ver se funciona
-        createListeners()
         createObservers()
+        createListeners()
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
 
-    }
 
 
     private fun createObservers() {
         viewModel.error.observe(viewLifecycleOwner, {
             if (it) {
+                manageProgressBar()
+                viewModel.resetErrrorCode()
                 createToasts(viewModel.errorCode)
             }
         })
@@ -79,16 +75,30 @@ class RegisterFragment : Fragment() {
             userType = requireActivity().resources.getString(R.string.professor_term)
         }
         binding.buttonAgroplusRegister.setOnClickListener {
-            viewModel.createUser(
-                binding.editTextEmailRegister.text.toString(),
-                binding.editTextPasswordRegister.text.toString(),
-                userType
-            )
+            if (userType != "") {
+                manageProgressBar()
+                viewModel.createUser(
+                    binding.editTextEmailRegister.text.toString(),
+                    binding.editTextPasswordRegister.text.toString(),
+                    binding.editTextAgroplusPassword.text.toString(),
+                    userType
+                )
+            }
         }
     }
 
     private fun createToasts(s: String) {
         Toast.makeText(context, s, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun manageProgressBar() {
+        if (binding.progressBarRegister.visibility == View.VISIBLE) {
+            binding.progressBarRegister.visibility = View.GONE
+            ScreenHelper.disableLoading(requireActivity())
+        } else {
+            binding.progressBarRegister.visibility = View.VISIBLE
+            ScreenHelper.enableLoading(requireActivity())
+        }
     }
 
 }
