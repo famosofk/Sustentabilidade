@@ -15,7 +15,9 @@
             app:destination="@id/registerFragment" />
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -24,10 +26,12 @@
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_farmsFragment"
-            app:destination="@id/farmsFragment" />
+            app:destination="@id/farmsFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
         <action
             android:id="@+id/action_mainFragment_to_certificationsFragment"
-            app:destination="@id/certificationsFragment" />
+            app:destination="@id/certificationsFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -45,7 +49,9 @@
         tools:layout="@layout/fragment_farms">
         <action
             android:id="@+id/action_farmsFragment_to_createFarmFragment"
-            app:destination="@id/createFarmFragment" />
+            app:destination="@id/createFarmFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_farmsFragment_to_createProgramFragment"
             app:destination="@id/createProgramFragment" />
