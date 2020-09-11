@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
@@ -30,13 +29,15 @@ class LoginFragment : Fragment() {
         setListeners()
         setObservers()
 
+
+
         return binding.root
     }
 
 
 
     private fun setObservers() {
-        viewModel.mUser.observe(viewLifecycleOwner, Observer {
+        viewModel.mUser.observe(viewLifecycleOwner, {
             if (it) {
                 binding.root.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
             }
