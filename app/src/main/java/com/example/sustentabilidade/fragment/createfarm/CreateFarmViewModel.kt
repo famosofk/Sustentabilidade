@@ -3,10 +3,10 @@ package com.example.sustentabilidade.fragment.createfarm
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.sustentabilidade.models.AtividadesEconomicas
-import com.example.sustentabilidade.models.BalancoPatrimonial
-import com.example.sustentabilidade.models.Farm
-import com.example.sustentabilidade.models.FluxoCaixa
+import com.example.sustentabilidade.models.gestaomodels.AtividadesEconomicas
+import com.example.sustentabilidade.models.gestaomodels.BalancoPatrimonial
+import com.example.sustentabilidade.models.gestaomodels.Farm
+import com.example.sustentabilidade.models.gestaomodels.FluxoCaixa
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import io.realm.Realm

@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.CreateFarmFragmentBinding
-import com.example.sustentabilidade.models.Program
+import com.example.sustentabilidade.models.gestaomodels.Program
 import io.realm.Realm
 import io.realm.kotlin.where
 

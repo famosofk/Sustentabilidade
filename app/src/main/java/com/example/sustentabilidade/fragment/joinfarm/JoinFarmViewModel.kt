@@ -3,7 +3,7 @@ package com.example.sustentabilidade.fragment.joinfarm
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.sustentabilidade.models.Farm
+import com.example.sustentabilidade.models.gestaomodels.Farm
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener

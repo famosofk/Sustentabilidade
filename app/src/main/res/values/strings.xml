@@ -26,4 +26,28 @@
     <string name="success_saving_farm">Fazenda salva com sucesso.</string>
     <string name="alertdialog_body_intro_message">Insira a senha para participar desta fazenda.</string>
     <string name="alertdialog_title_intro_message">Participar de fazenda</string>
+    <string name="create_certification_intro">Criar certificado</string>
+    <string name="manage_certification_intro">Gerenciar certificados</string>
+    <string name="create_certification_button_desc">botão de criar certificado.</string>
+    <string name="dominion_term">Domínio</string>
+    <string name="theme_term">Tema</string>
+    <string name="subtheme_term">Sub Tema</string>
+    <string name="question_term">Pergunta</string>
+    <string name="create_term">Criar</string>
+    <string name="manage_term">Gerenciar</string>
+    <string name="choose_model">Selecione o tipo</string>
+    <string name="parent_term">Vincular a</string>
+    <string name="choose_name">Escolha um nome</string>
+    <string name="finish_term">finalizar</string>
+    <string name="repeat_signin">Cadastrar outro</string>
+    <string name="certification_term">Certificados</string>
+
+    <string-array name="models">
+        <item>Domínio</item>
+        <item>Tema</item>
+        <item>Subtema</item>
+        <item>Pergunta</item>
+
+
+    </string-array>
 </resources>

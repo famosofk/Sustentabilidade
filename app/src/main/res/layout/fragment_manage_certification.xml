@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        android:padding="24dp"
+        tools:context=".fragment.managecertification.ManageCertificationFragment">
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/textview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/certification_term"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/titleCreateCertification"
+            style="@style/edittext_title"
+            android:text="@string/create_certification_intro"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView4"
+
+            />
+
+        <EditText
+            android:id="@+id/editTextTitleCreateCertificate"
+            style="@style/editText_style"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toStartOf="@id/createCertificationButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleCreateCertification" />
+
+
+        <ImageButton
+            android:id="@+id/createCertificationButton"
+            android:layout_width="48dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_shape"
+            android:backgroundTint="@color/colorAccent"
+            android:contentDescription="@string/create_certification_button_desc"
+            android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/editTextTitleCreateCertificate"
+            app:layout_constraintTop_toTopOf="@id/editTextTitleCreateCertificate" />
+
+        <TextView
+            android:id="@+id/manageCertificateTitle"
+            style="@style/textview_title"
+            android:layout_marginTop="16dp"
+            android:text="@string/manage_certification_intro"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/createCertificationButton" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/certificationRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/manageCertificateTitle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

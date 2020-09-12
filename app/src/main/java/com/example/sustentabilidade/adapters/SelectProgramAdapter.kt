@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sustentabilidade.databinding.ItemlistLayoutBinding
 import com.example.sustentabilidade.helpers.ClickListener
-import com.example.sustentabilidade.models.Program
+import com.example.sustentabilidade.models.gestaomodels.Program
 
 class SelectProgramAdapter : ListAdapter<Program, SelectProgramViewHolder>(SelectProgramDiff()) {
 

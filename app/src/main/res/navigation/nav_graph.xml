@@ -63,7 +63,11 @@
         android:id="@+id/certificationsFragment"
         android:name="com.example.sustentabilidade.fragment.certification.CertificationsFragment"
         android:label="fragment_certifications"
-        tools:layout="@layout/fragment_certifications" />
+        tools:layout="@layout/fragment_certifications">
+        <action
+            android:id="@+id/action_certificationsFragment_to_manageCertificationFragment"
+            app:destination="@id/manageCertificationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createFarmFragment"
         android:name="com.example.sustentabilidade.fragment.createfarm.CreateFarmFragment"
@@ -100,4 +104,35 @@
             android:id="@+id/action_selectProgramFragment_to_joinFarmFragment"
             app:destination="@id/joinFarmFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/manageCertificationFragment"
+        android:name="com.example.sustentabilidade.fragment.managecertification.ManageCertificationFragment"
+        android:label="fragment_manage_certification"
+        tools:layout="@layout/fragment_manage_certification">
+        <action
+            android:id="@+id/action_manageCertificationFragment_to_signinFragment"
+            app:destination="@id/singinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singinFragment"
+        android:name="com.example.sustentabilidade.SignInFragment"
+        android:label="fragment_signin"
+        tools:layout="@layout/fragment_signin">
+        <action
+            android:id="@+id/action_certificationFragment_to_createModelFragment"
+            app:destination="@id/createModelFragment" />
+        <action
+            android:id="@+id/action_singinFragment_to_manageModelFragment"
+            app:destination="@id/manageModelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createModelFragment"
+        android:name="com.example.sustentabilidade.CreateModelFragment"
+        android:label="fragment_create_model"
+        tools:layout="@layout/fragment_create_model" />
+    <fragment
+        android:id="@+id/manageModelFragment"
+        android:name="com.example.sustentabilidade.ManageModelFragment"
+        android:label="fragment_manage_model"
+        tools:layout="@layout/fragment_manage_model" />
 </navigation>

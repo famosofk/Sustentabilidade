@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sustentabilidade.databinding.ItemlistLayoutBinding
 import com.example.sustentabilidade.helpers.ClickListener
-import com.example.sustentabilidade.models.Farm
+import com.example.sustentabilidade.models.gestaomodels.Farm
 
 
 class SelectFarmAdapter : ListAdapter<Farm, SelectFarmViewHolder>(SelectFarmDiff()) {

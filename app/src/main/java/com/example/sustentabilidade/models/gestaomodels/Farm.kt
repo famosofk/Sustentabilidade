@@ -1,4 +1,4 @@
-package com.example.sustentabilidade.models
+package com.example.sustentabilidade.models.gestaomodels
 
 import io.realm.RealmObject
 

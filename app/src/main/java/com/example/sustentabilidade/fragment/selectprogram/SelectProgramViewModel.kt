@@ -3,7 +3,7 @@ package com.example.sustentabilidade.fragment.selectprogram
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.sustentabilidade.models.Program
+import com.example.sustentabilidade.models.gestaomodels.Program
 import io.realm.Realm
 import io.realm.kotlin.where
 
