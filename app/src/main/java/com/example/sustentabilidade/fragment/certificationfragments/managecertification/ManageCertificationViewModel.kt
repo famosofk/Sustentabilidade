@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.sustentabilidade.models.certificationmodels.Certification
 import io.realm.Realm
-import io.realm.kotlin.where
 
 class ManageCertificationViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -33,7 +32,7 @@ class ManageCertificationViewModel(application: Application) : AndroidViewModel(
 
 
     fun getList() {
-        list = realm.where<Certification>().findAll()
+       // list = realm.where<Certification>().findAll()
         updatedList.value = true
     }
 

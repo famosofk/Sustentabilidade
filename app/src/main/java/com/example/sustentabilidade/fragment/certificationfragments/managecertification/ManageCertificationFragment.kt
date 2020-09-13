@@ -20,6 +20,7 @@ class ManageCertificationFragment : Fragment() {
     private lateinit var binding: FragmentManageCertificationBinding
     private lateinit var viewModel: ManageCertificationViewModel
     private val adapter = CreateCertificationAdapter()
+    private val elements = mutableListOf<Certification>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,9 +54,16 @@ class ManageCertificationFragment : Fragment() {
         }
         adapter.attachListener(listener)
         binding.certificationRecycler.adapter = adapter
+        getElements()
+
+
+    }
+
+    private fun getElements() {
+        elements.clear()
+        val realm = Realm.getDefaultInstance()
+        elements.addAll(realm.where<Certification>().findAll())
         viewModel.getList()
-
-
     }
 
     private fun enableObservers() {
@@ -63,24 +71,19 @@ class ManageCertificationFragment : Fragment() {
             if (it) {
                 binding.editTextTitleCreateCertificate.text.clear()
                 viewModel.turnBackSavedToFalse()
-                viewModel.getList()
+                getElements()
 
             }
         })
         viewModel.mUpdatedList.observe(viewLifecycleOwner, {
             if (it) {
-                //adapter.submitList(viewModel.list)
-                createAdapterList()
+                adapter.submitList(null)
+                adapter.submitList(elements)
                 viewModel.turnBackUpdatedToFalse()
             }
         })
     }
 
-    private fun createAdapterList() {
-        val realm = Realm.getDefaultInstance()
-        adapter.submitList(realm.where<Certification>().findAll())
-
-    }
 
 
     private fun enableListeners() {
