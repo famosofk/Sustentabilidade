@@ -44,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/farmsFragment"
-        android:name="com.example.sustentabilidade.fragment.farms.FarmsFragment"
+        android:name="com.example.sustentabilidade.fragment.farmsfragments.farms.FarmsFragment"
         android:label="fragment_farms"
         tools:layout="@layout/fragment_farms">
         <action
@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/certificationsFragment"
-        android:name="com.example.sustentabilidade.fragment.certification.CertificationsFragment"
+        android:name="com.example.sustentabilidade.fragment.certificationfragments.certification.CertificationsFragment"
         android:label="fragment_certifications"
         tools:layout="@layout/fragment_certifications">
         <action
@@ -70,7 +70,7 @@
     </fragment>
     <fragment
         android:id="@+id/createFarmFragment"
-        android:name="com.example.sustentabilidade.fragment.createfarm.CreateFarmFragment"
+        android:name="com.example.sustentabilidade.fragment.farmsfragments.createfarm.CreateFarmFragment"
         android:label="create_farm_fragment"
         tools:layout="@layout/create_farm_fragment">
         <action
@@ -79,7 +79,7 @@
     </fragment>
     <fragment
         android:id="@+id/createProgramFragment"
-        android:name="com.example.sustentabilidade.fragment.createprogram.CreateProgramFragment"
+        android:name="com.example.sustentabilidade.fragment.farmsfragments.createprogram.CreateProgramFragment"
         android:label="create_program_fragment"
         tools:layout="@layout/create_program_fragment">
         <action
@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/joinFarmFragment"
-        android:name="com.example.sustentabilidade.fragment.joinfarm.JoinFarmFragment"
+        android:name="com.example.sustentabilidade.fragment.farmsfragments.joinfarm.JoinFarmFragment"
         android:label="join_farm_fragment"
         tools:layout="@layout/join_farm_fragment">
         <action
@@ -97,7 +97,7 @@
     </fragment>
     <fragment
         android:id="@+id/selectProgramFragment"
-        android:name="com.example.sustentabilidade.fragment.selectprogram.SelectProgramFragment"
+        android:name="com.example.sustentabilidade.fragment.farmsfragments.selectprogram.SelectProgramFragment"
         android:label="select_program_fragment"
         tools:layout="@layout/select_program_fragment">
         <action
@@ -106,7 +106,7 @@
     </fragment>
     <fragment
         android:id="@+id/manageCertificationFragment"
-        android:name="com.example.sustentabilidade.fragment.managecertification.ManageCertificationFragment"
+        android:name="com.example.sustentabilidade.fragment.certificationfragments.managecertification.ManageCertificationFragment"
         android:label="fragment_manage_certification"
         tools:layout="@layout/fragment_manage_certification">
         <action
@@ -115,7 +115,7 @@
     </fragment>
     <fragment
         android:id="@+id/singinFragment"
-        android:name="com.example.sustentabilidade.SignInFragment"
+        android:name="com.example.sustentabilidade.fragment.certificationfragments.signin.SignInFragment"
         android:label="fragment_signin"
         tools:layout="@layout/fragment_signin">
         <action
@@ -127,9 +127,13 @@
     </fragment>
     <fragment
         android:id="@+id/createModelFragment"
-        android:name="com.example.sustentabilidade.CreateModelFragment"
+        android:name="com.example.sustentabilidade.fragment.certificationfragments.createmodel.CreateModelFragment"
         android:label="fragment_create_model"
-        tools:layout="@layout/fragment_create_model" />
+        tools:layout="@layout/fragment_create_model">
+        <action
+            android:id="@+id/action_createModelFragment_to_certificationsFragment"
+            app:destination="@id/certificationsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/manageModelFragment"
         android:name="com.example.sustentabilidade.ManageModelFragment"

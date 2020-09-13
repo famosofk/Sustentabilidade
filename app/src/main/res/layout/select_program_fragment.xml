@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
-        tools:context=".fragment.selectprogram.SelectProgramFragment">
+        tools:context=".fragment.farmsfragments.selectprogram.SelectProgramFragment">
 
         <TextView
             android:id="@+id/textViewProgramTitle"

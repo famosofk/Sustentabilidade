@@ -1,4 +1,4 @@
-package com.example.sustentabilidade
+package com.example.sustentabilidade.fragment.certificationfragments.signin
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.FragmentSigninBinding
-import com.example.sustentabilidade.fragment.SignInViewModel
 import com.example.sustentabilidade.helpers.ScreenHelper
 
 
@@ -20,7 +20,7 @@ class SignInFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnCl
     private lateinit var binding: FragmentSigninBinding
     private lateinit var viewModel: SignInViewModel
     private var itemType = ""
-
+    private var certificationID = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +29,7 @@ class SignInFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnCl
         viewModel = ViewModelProvider(this).get(SignInViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signin, container, false)
         viewModel.getCertification(arguments?.getString("certificationName")!!)
+        certificationID = arguments?.getString("certificationID")!!
         binding.certificationTitle.text = arguments?.getString("certificationName")!!
         enableListeners()
 
@@ -47,6 +48,7 @@ class SignInFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnCl
         val bundle = Bundle()
         bundle.putString("type", itemType)
         bundle.putString("operation", buttonID)
+        bundle.putString("certificationID", certificationID)
         binding.root.findNavController()
             .navigate(R.id.action_certificationFragment_to_createModelFragment, bundle)
 

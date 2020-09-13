@@ -1,4 +1,4 @@
-package com.example.sustentabilidade.fragment.joinfarm
+package com.example.sustentabilidade.fragment.farmsfragments.joinfarm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

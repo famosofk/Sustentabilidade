@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
-        tools:context=".fragment.createfarm.CreateFarmFragment">
+        tools:context=".fragment.farmsfragments.createfarm.CreateFarmFragment">
 
         <TextView
             android:id="@+id/textView2"

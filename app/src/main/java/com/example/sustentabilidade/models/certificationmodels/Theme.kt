@@ -3,9 +3,8 @@ package com.example.sustentabilidade.models.certificationmodels
 import io.realm.RealmList
 import io.realm.RealmObject
 
-open class Theme : RealmObject() {
+open class Theme(var name: String = "") : RealmObject() {
 
-    var name = ""
     var subThemeList = RealmList<SubTheme>()
     var subThemeNumber = 0
 

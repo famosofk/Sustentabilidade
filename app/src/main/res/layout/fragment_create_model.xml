@@ -1,85 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorBackground"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="24dp"
-    tools:context=".CreateModelFragment">
 
-    <TextView
-        android:id="@+id/certificationTitle"
-        style="@style/textview_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="TextView"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp" />
+<layout>
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="24dp"
+        tools:context=".fragment.certificationfragments.createmodel.CreateModelFragment">
 
         <TextView
-            android:id="@+id/textView7"
-            style="@style/edittext_title"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginEnd="8dp"
+            android:id="@+id/certificationTitle"
+            style="@style/textview_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="TextView"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/parent_term" />
+            android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/spinner2"
+            <TextView
+                android:id="@+id/associateTextView"
+                style="@style/edittext_title"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:text="@string/parent_term" />
+
+            <Spinner
+                android:id="@+id/parentModelSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            style="@style/editText_style"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_weight="1" />
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="@string/choose_name"
+            android:inputType="textPersonName" />
 
-
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
-        style="@style/editText_style"
-        android:layout_width="match_parent"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="@string/choose_name"
-        android:inputType="textPersonName" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:background="@drawable/button_shape"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="@string/repeat_signin"
-            android:textColor="@color/colorBackground" />
-
-        <Button
-            android:id="@+id/button2"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            android:background="@drawable/button_shape"
-            android:backgroundTint="@color/colorAccent"
-            android:text="@string/finish_term"
-            android:textColor="@color/colorBackground" />
-    </LinearLayout>
+            android:orientation="horizontal">
 
-</LinearLayout>
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/repeat_signin"
+                android:textColor="@color/colorBackground" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/finish_term"
+                android:textColor="@color/colorBackground" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

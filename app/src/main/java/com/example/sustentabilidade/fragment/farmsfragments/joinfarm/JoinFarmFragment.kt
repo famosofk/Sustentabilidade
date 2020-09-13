@@ -1,4 +1,4 @@
-package com.example.sustentabilidade.fragment.joinfarm
+package com.example.sustentabilidade.fragment.farmsfragments.joinfarm
 
 import android.app.AlertDialog
 import android.os.Bundle

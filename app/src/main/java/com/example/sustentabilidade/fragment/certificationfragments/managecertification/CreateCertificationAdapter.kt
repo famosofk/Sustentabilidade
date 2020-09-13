@@ -1,4 +1,4 @@
-package com.example.sustentabilidade.fragment.managecertification
+package com.example.sustentabilidade.fragment.certificationfragments.managecertification
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -60,10 +60,10 @@ class CreateCertificationAdapter :
 
 class CreateProgramDiff : DiffUtil.ItemCallback<Certification>() {
     override fun areItemsTheSame(oldItem: Certification, newItem: Certification): Boolean {
-        return oldItem.name == newItem.name
+        return true
     }
 
     override fun areContentsTheSame(oldItem: Certification, newItem: Certification): Boolean {
-        return oldItem.dominionNumber == newItem.dominionNumber
+        return true
     }
 }

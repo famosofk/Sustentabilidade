@@ -1,4 +1,4 @@
-package com.example.sustentabilidade.fragment.selectprogram
+package com.example.sustentabilidade.fragment.farmsfragments.selectprogram
 
 import android.os.Bundle
 import android.view.LayoutInflater

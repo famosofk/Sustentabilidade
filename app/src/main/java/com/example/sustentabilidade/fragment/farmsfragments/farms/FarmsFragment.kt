@@ -1,4 +1,4 @@
-package com.example.sustentabilidade.fragment.farms
+package com.example.sustentabilidade.fragment.farmsfragments.farms
 
 
 import android.os.Bundle

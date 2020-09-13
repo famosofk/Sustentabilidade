@@ -1,4 +1,4 @@
-package com.example.sustentabilidade.fragment
+package com.example.sustentabilidade.fragment.certificationfragments.signin
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

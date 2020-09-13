@@ -1,4 +1,4 @@
-package com.example.sustentabilidade.fragment.certification
+package com.example.sustentabilidade.fragment.certificationfragments.certification
 
 import android.os.Bundle
 import android.view.LayoutInflater

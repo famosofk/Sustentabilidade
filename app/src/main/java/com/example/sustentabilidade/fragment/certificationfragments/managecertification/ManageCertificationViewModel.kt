@@ -1,4 +1,4 @@
-package com.example.sustentabilidade.fragment.managecertification
+package com.example.sustentabilidade.fragment.certificationfragments.managecertification
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -14,7 +14,7 @@ class ManageCertificationViewModel(application: Application) : AndroidViewModel(
     private val savedItem = MutableLiveData(false)
     val mSavedItem: LiveData<Boolean>
         get() = savedItem
-    var list = listOf<Certification>()
+    var list = mutableListOf<Certification>()
 
     private val updatedList = MutableLiveData(false)
     val mUpdatedList: LiveData<Boolean>
@@ -27,13 +27,16 @@ class ManageCertificationViewModel(application: Application) : AndroidViewModel(
         realm.beginTransaction()
         realm.copyToRealm(certification)
         realm.commitTransaction()
+
         savedItem.value = true
     }
+
 
     fun getList() {
         list = realm.where<Certification>().findAll()
         updatedList.value = true
     }
+
 
     fun turnBackSavedToFalse() {
         savedItem.value = false

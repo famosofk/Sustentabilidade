@@ -1,4 +1,4 @@
-package com.example.sustentabilidade.fragment.createfarm
+package com.example.sustentabilidade.fragment.farmsfragments.createfarm
 
 import android.os.Bundle
 import android.view.LayoutInflater
