@@ -40,13 +40,13 @@
     <string name="choose_name">Escolha um nome</string>
     <string name="finish_term">finalizar</string>
     <string name="repeat_signin">Cadastrar outro</string>
-    <string name="certification_term">Certificados</string>
+    <string name="certification_term">Sistemas</string>
 
     <string-array name="models">
-        <item>Domínio</item>
+        <item>Dimensão</item>
         <item>Tema</item>
         <item>Subtema</item>
-        <item>Pergunta</item>
+        <item>Indicador</item>
 
 
     </string-array>

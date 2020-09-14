@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.FragmentCreateModelBinding
 import com.example.sustentabilidade.helpers.ScreenHelper
@@ -34,16 +35,28 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
     }
 
     private fun setObservers() {
-        viewModel.mFinish.observe(viewLifecycleOwner, {})
-        viewModel.mRepeat.observe(viewLifecycleOwner, {})
+        viewModel.mFinish.observe(viewLifecycleOwner, {
+            if (it) {
+                binding.root.findNavController()
+                    .navigate(R.id.action_createModelFragment_to_certificationsFragment)
+            }
+        })
+        viewModel.mRepeat.observe(viewLifecycleOwner, {
+            if (it) {
+                binding.inputNameSignIn.text.clear()
+                viewModel.turnRepetBackToFalse()
+            }
+        })
     }
 
     private fun initializeList() {
-        if (arguments?.getString("type")!! == "Domínio") {
+        binding.certificationTitle.text = arguments?.getString("type")
+        viewModel.initializeArray(resources.getStringArray(R.array.models))
+        if (arguments?.getString("type")!! == "Dimensão") {
             binding.parentModelSpinner.visibility = View.GONE
             binding.associateTextView.visibility = View.GONE
         } else {
-            viewModel.initializeArray(resources.getStringArray(R.array.models))
+
             viewModel.initializeList(arguments?.getString("type")!!)
             val adapter = context?.let {
                 ArrayAdapter(
@@ -54,6 +67,9 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
             binding.parentModelSpinner.adapter = adapter
             binding.parentModelSpinner.onItemSelectedListener = this
         }
+        binding.finishSignInButton.setOnClickListener(this)
+        binding.signInAgainButton.setOnClickListener(this)
+
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -64,7 +80,17 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
     override fun onNothingSelected(p0: AdapterView<*>?) {}
 
     override fun onClick(p0: View?) {
-        TODO("Not yet implemented")
+        var command = 0
+        if (p0?.id == R.id.finishSignInButton) {
+            command = 1
+        }
+
+        viewModel.createModel(
+            arguments?.getString("type")!!,
+            binding.inputNameSignIn.text.toString(),
+            parent,
+            command = command
+        )
     }
 
 

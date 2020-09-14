@@ -13,7 +13,6 @@ class ManageCertificationViewModel(application: Application) : AndroidViewModel(
     private val savedItem = MutableLiveData(false)
     val mSavedItem: LiveData<Boolean>
         get() = savedItem
-    var list = mutableListOf<Certification>()
 
     private val updatedList = MutableLiveData(false)
     val mUpdatedList: LiveData<Boolean>
@@ -32,7 +31,6 @@ class ManageCertificationViewModel(application: Application) : AndroidViewModel(
 
 
     fun getList() {
-       // list = realm.where<Certification>().findAll()
         updatedList.value = true
     }
 

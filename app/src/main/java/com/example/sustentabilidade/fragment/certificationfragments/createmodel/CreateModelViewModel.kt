@@ -39,7 +39,7 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
         modelType = array
     }
 
-    fun createModel(key: String, name: String, parent: String, command: Int = 0) {
+    fun createModel(key: String, name: String, parent: String = "", command: Int = 0) {
         realm.beginTransaction()
         when (key) {
 
@@ -69,6 +69,10 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
             finish.value = true
         }
 
+    }
+
+    fun turnRepetBackToFalse() {
+        repeat.value = false
     }
 
     fun initializeList(type: String) {

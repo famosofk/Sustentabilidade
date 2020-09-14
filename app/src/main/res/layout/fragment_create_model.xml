@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
@@ -21,6 +21,14 @@
             android:text="TextView"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="24sp" />
+
+        <View
+            android:id="@+id/divider7"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="?android:attr/listDivider" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,13 +49,16 @@
                 android:id="@+id/parentModelSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_weight="1" />
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textAlignment="center" />
 
 
         </LinearLayout>
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/inputNameSignIn"
             style="@style/editText_style"
             android:layout_width="match_parent"
             android:layout_marginTop="8dp"
@@ -61,7 +72,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/signInAgainButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -73,7 +84,7 @@
                 android:textColor="@color/colorBackground" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/finishSignInButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

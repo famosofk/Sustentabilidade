@@ -46,8 +46,8 @@ class ManageCertificationFragment : Fragment() {
         val listener = object : CreateCertificationItemClickListener {
             override fun onClick(p: Int) {
                 val bundle = Bundle()
-                bundle.putString("certificationName", viewModel.list[p].name)
-                bundle.putString("certificationID", viewModel.list[p].id)
+                bundle.putString("certificationName", elements[p].name)
+                bundle.putString("certificationID", elements[p].id)
                 binding.root.findNavController()
                     .navigate(R.id.action_manageCertificationFragment_to_signinFragment, bundle)
             }
