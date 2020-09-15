@@ -66,6 +66,13 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
             }
             binding.parentModelSpinner.adapter = adapter
             binding.parentModelSpinner.onItemSelectedListener = this
+
+            if (arguments?.getString("type")!! == "Indicador") {
+                binding.indicatorTypeTextView.visibility = View.VISIBLE
+                binding.defineWeightSwitch.visibility = View.VISIBLE
+                binding.indicatorTypeRadioGroup.visibility = View.VISIBLE
+                binding.defineWeightSwitch.setOnClickListener(this)
+            }
         }
         binding.finishSignInButton.setOnClickListener(this)
         binding.signInAgainButton.setOnClickListener(this)
@@ -80,17 +87,29 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
     override fun onNothingSelected(p0: AdapterView<*>?) {}
 
     override fun onClick(p0: View?) {
-        var command = 0
-        if (p0?.id == R.id.finishSignInButton) {
-            command = 1
-        }
+        if (p0?.id == R.id.defineWeightSwitch) {
 
-        viewModel.createModel(
-            arguments?.getString("type")!!,
-            binding.inputNameSignIn.text.toString(),
-            parent,
-            command = command
-        )
+            binding.defineWeightSwitch.isChecked = !binding.defineWeightSwitch.isChecked
+            if (binding.defineWeightSwitch.isChecked) {
+                binding.weightIndicatorSignIn.visibility = View.VISIBLE
+            } else {
+                binding.weightIndicatorSignIn.visibility = View.GONE
+            }
+
+        } else {
+
+            var command = 0
+            if (p0?.id == R.id.finishSignInButton) {
+                command = 1
+            }
+
+            viewModel.createModel(
+                arguments?.getString("type")!!,
+                binding.inputNameSignIn.text.toString(),
+                parent,
+                command = command
+            )
+        }
     }
 
 
