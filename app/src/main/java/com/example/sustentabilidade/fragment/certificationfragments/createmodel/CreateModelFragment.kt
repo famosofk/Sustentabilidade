@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.FragmentCreateModelBinding
 import com.example.sustentabilidade.helpers.ScreenHelper
+import com.example.sustentabilidade.models.certificationmodels.Question
 
 class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnClickListener {
 
@@ -20,6 +21,7 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
     private lateinit var binding: FragmentCreateModelBinding
     private lateinit var viewModel: CreateModelViewModel
     private var parent = ""
+    private var indicatorType = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -89,7 +91,6 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
     override fun onClick(p0: View?) {
         if (p0?.id == R.id.defineWeightSwitch) {
 
-            binding.defineWeightSwitch.isChecked = !binding.defineWeightSwitch.isChecked
             if (binding.defineWeightSwitch.isChecked) {
                 binding.weightIndicatorSignIn.visibility = View.VISIBLE
             } else {
@@ -102,12 +103,19 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
             if (p0?.id == R.id.finishSignInButton) {
                 command = 1
             }
+            if (binding.booleanTypeIndicator.isChecked) {
+                indicatorType = Question.BOOLEAN_INDICATOR_TYPE
+            } else {
+                indicatorType = Question.VALUE_INDICATOR_TYPE
+            }
 
             viewModel.createModel(
                 arguments?.getString("type")!!,
                 binding.inputNameSignIn.text.toString(),
                 parent,
-                command = command
+                command = command,
+                binding.weightIndicatorSignIn.text.toString(),
+                indicatorType
             )
         }
     }

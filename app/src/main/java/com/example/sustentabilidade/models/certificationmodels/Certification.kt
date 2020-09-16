@@ -1,7 +1,9 @@
 package com.example.sustentabilidade.models.certificationmodels
 
+import io.realm.Realm
 import io.realm.RealmList
 import io.realm.RealmObject
+import io.realm.kotlin.where
 import java.util.*
 
 open class Certification : RealmObject() {
@@ -50,6 +52,8 @@ open class Certification : RealmObject() {
 
     fun removeItem(dominion: Dominion) {
         dominionList.remove(dominion)
+        Realm.getDefaultInstance().where<Dominion>().contains("id", dominion.id).findAll()
+            .deleteAllFromRealm()
         decrementNumber()
     }
 

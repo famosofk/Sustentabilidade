@@ -86,7 +86,7 @@
             android:visibility="gone">
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/booleanTypeIndicator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -94,7 +94,7 @@
                 android:text="Aplicável" />
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/valueTypeIndicator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

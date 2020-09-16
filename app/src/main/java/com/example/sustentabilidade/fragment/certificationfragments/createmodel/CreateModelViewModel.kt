@@ -22,9 +22,7 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
     val mFinish: LiveData<Boolean>
         get() = finish
 
-    fun turnFinishBackToFalse() {
-        finish.value = false
-    }
+
 
     fun turnBackRepeatToFalse() {
         repeat.value = false
@@ -39,7 +37,14 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
         modelType = array
     }
 
-    fun createModel(key: String, name: String, parent: String = "", command: Int = 0) {
+    fun createModel(
+        key: String,
+        name: String,
+        parent: String = "",
+        command: Int = 0,
+        weight: String,
+        type: Int
+    ) {
         realm.beginTransaction()
         when (key) {
 
@@ -49,15 +54,23 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
             }
             modelType[1] -> {
                 val theme = Theme(name)
+                theme.parent = parent
                 certification.getDominion(parent)?.addItem(theme)
             }
             modelType[2] -> {
                 val subTheme = SubTheme(name)
+                subTheme.parent = parent
                 certification.getTheme(parent)?.addItem(subTheme)
             }
             modelType[3] -> {
                 val question = Question(name)
+                question.type = type
+                question.parent = parent
+                if (weight.isNotEmpty()) {
+                    question.weight = weight.toFloat()
+                }
                 certification.getSubtheme(parent)?.addItem(question)
+
             }
 
         }

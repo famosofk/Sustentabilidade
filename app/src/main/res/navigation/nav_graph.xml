@@ -112,6 +112,9 @@
         <action
             android:id="@+id/action_manageCertificationFragment_to_signinFragment"
             app:destination="@id/singinFragment" />
+        <action
+            android:id="@+id/action_manageCertificationFragment_to_manageCertificationItemsFragment3"
+            app:destination="@id/manageCertificationItemsFragment3" />
     </fragment>
     <fragment
         android:id="@+id/singinFragment"
@@ -139,4 +142,9 @@
         android:name="com.example.sustentabilidade.ManageModelFragment"
         android:label="fragment_manage_model"
         tools:layout="@layout/fragment_manage_model" />
+    <fragment
+        android:id="@+id/manageCertificationItemsFragment3"
+        android:name="com.example.sustentabilidade.ManageCertificationItemsFragment"
+        android:label="fragment_manage_certification_items"
+        tools:layout="@layout/fragment_manage_certification_items" />
 </navigation>
