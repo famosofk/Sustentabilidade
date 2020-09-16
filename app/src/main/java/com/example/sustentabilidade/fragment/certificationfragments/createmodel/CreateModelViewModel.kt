@@ -23,12 +23,6 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
         get() = finish
 
 
-
-    fun turnBackRepeatToFalse() {
-        repeat.value = false
-    }
-
-
     fun getCertification(id: String) {
         certification = realm.where<Certification>().contains("id", id).findFirst()!!
     }
