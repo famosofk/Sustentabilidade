@@ -10,12 +10,24 @@ open class SubTheme(var name: String = "") : RealmObject() {
 
     var id = UUID.randomUUID().toString()
     var questionList = RealmList<Question>()
+    var questionNameList = RealmList<String>()
     var questionNumber = 0
     var parent = ""
 
     fun addItem(question: Question) {
         questionList.add(question)
+        questionNameList.add(question.name)
         incrementNumber()
+    }
+
+    fun getQuestionsFiltered(parent: String): List<Question> {
+        val list = mutableListOf<Question>()
+        for (item in questionList) {
+            if (item.parent.equals(parent)) {
+                list.add(item)
+            }
+        }
+        return list;
     }
 
     fun removeItem(question: Question) {

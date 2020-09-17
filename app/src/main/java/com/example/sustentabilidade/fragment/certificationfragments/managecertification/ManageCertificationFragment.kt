@@ -1,8 +1,5 @@
 package com.example.sustentabilidade.fragment.certificationfragments.managecertification
 
-import android.app.AlertDialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +11,6 @@ import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.FragmentManageCertificationBinding
 import com.example.sustentabilidade.models.certificationmodels.Certification
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import io.realm.Realm
 import io.realm.kotlin.where
 
@@ -30,7 +26,6 @@ class ManageCertificationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_manage_certification,
@@ -49,7 +44,11 @@ class ManageCertificationFragment : Fragment() {
     private fun initializingRecyclerView() {
         val listener = object : CreateCertificationItemClickListener {
             override fun onClick(p: Int) {
-                createAlertDialog(p)
+                binding.root.findNavController()
+                    .navigate(
+                        R.id.action_manageCertificationFragment_to_signinFragment,
+                        getBundle(p)
+                    )
             }
         }
         adapter.attachListener(listener)
@@ -66,29 +65,6 @@ class ManageCertificationFragment : Fragment() {
         return bundle
     }
 
-    private fun createAlertDialog(p: Int) {
-
-        val dialogView =
-            LayoutInflater.from(context).inflate(R.layout.dialog_view_alert_dialog, null)
-        val manageButton: FloatingActionButton = dialogView.findViewById(R.id.manageattributes)
-        val addButton: FloatingActionButton = dialogView.findViewById(R.id.createNewAttribute)
-        val mBuilder = AlertDialog.Builder(context).setView(dialogView).create()
-        mBuilder.show();
-        mBuilder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        manageButton.setOnClickListener {
-            binding.root.findNavController()
-                .navigate(R.id.manageCertificationItemsFragment3, getBundle(p))
-            mBuilder.dismiss()
-        }
-        addButton.setOnClickListener {
-            binding.root.findNavController()
-                .navigate(R.id.action_manageCertificationFragment_to_signinFragment, getBundle(p))
-            mBuilder.dismiss()
-        }
-
-
-    }
 
     private fun getElements() {
         elements.clear()

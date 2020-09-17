@@ -9,14 +9,17 @@ import java.util.*
 open class Dominion(var name: String = "") : RealmObject() {
     var id = UUID.randomUUID().toString()
     var themeList = RealmList<Theme>()
+    var themeNameList = RealmList<String>()
     var themeNumber = 0
 
 
 
     fun addItem(theme: Theme) {
         themeList.add(theme)
+        themeNameList.add(theme.name)
         incrementNumber()
     }
+
 
     fun removeItem(theme: Theme) {
         themeList.remove(theme)

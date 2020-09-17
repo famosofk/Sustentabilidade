@@ -9,12 +9,14 @@ import java.util.*
 open class Theme(var name: String = "") : RealmObject() {
     var id = UUID.randomUUID().toString()
     var subThemeList = RealmList<SubTheme>()
+    var subThemeNameList = RealmList<String>()
     var subThemeNumber = 0
     var parent = ""
 
 
     fun addItem(subTheme: SubTheme) {
         subThemeList.add(subTheme)
+        subThemeNameList.add(subTheme.name)
         incrementNumber()
     }
 

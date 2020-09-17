@@ -10,8 +10,14 @@ open class Question(var name: String = "") : RealmObject() {
     var parent = ""
 
     companion object {
+
         val BOOLEAN_INDICATOR_TYPE = 1
         val VALUE_INDICATOR_TYPE = 2
+
+        val ANSWER_NAO_SE_APLICA = -1f
+        val ANSWER_NAO_POSSUI = 0f
+        val ANSWER_POSSUI = 1f
+
     }
 
 }

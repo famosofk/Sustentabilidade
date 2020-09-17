@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -44,13 +43,19 @@ class SignInFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnCl
 
     }
 
-    private fun enableNavigation(buttonID: String) {
+    private fun enableNavigation(buttonID: Int) {
         val bundle = Bundle()
         bundle.putString("type", itemType)
-        bundle.putString("operation", buttonID)
+        bundle.putString("operation", buttonID.toString())
         bundle.putString("certificationID", certificationID)
-        binding.root.findNavController()
-            .navigate(R.id.action_certificationFragment_to_createModelFragment, bundle)
+
+        if (buttonID == binding.createModelButton.id) {
+            binding.root.findNavController()
+                .navigate(R.id.action_certificationFragment_to_createModelFragment, bundle)
+        } else if (buttonID == binding.manageModelButton.id) {
+            binding.root.findNavController()
+                .navigate(R.id.action_singinFragment_to_editComponentFragment, bundle)
+        }
 
     }
 
@@ -71,10 +76,10 @@ class SignInFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnCl
             when (itemType) {
                 array[0] -> {
                     if (p0.id == R.id.createModelButton) {
-                        enableNavigation(p0.id.toString())
+                        enableNavigation(p0.id)
                     } else if (p0.id == R.id.manageModelButton) {
                         if (viewModel.verifyDominion()) {
-                            enableNavigation(p0.id.toString())
+                            enableNavigation(p0.id)
                         } else {
                             ScreenHelper.createToast(requireContext(), "Crie um domínio primeiro")
                         }
@@ -82,7 +87,7 @@ class SignInFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnCl
                 }
                 array[1] -> {
                     if (viewModel.verifyDominion()) {
-                        enableNavigation(p0.id.toString())
+                        enableNavigation(p0.id)
                     } else {
                         ScreenHelper.createToast(requireContext(), "Crie um domínio primeiro.")
                     }
@@ -90,23 +95,22 @@ class SignInFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnCl
                 array[2] -> {
 
                     if (viewModel.verifyTheme()) {
-                        enableNavigation(p0.id.toString())
+                        enableNavigation(p0.id)
                     } else {
                         ScreenHelper.createToast(requireContext(), "Crie um tema primeiro.")
                     }
                 }
                 array[3] -> {
                     if (viewModel.verifySubTheme()) {
-                        enableNavigation(p0.id.toString())
+                        enableNavigation(p0.id)
                     } else {
                         ScreenHelper.createToast(requireContext(), "Crie um subtema primeiro.")
                     }
                 }
-                else -> Toast.makeText(
-                    context,
-                    "Erro ao selecionar operação. Contate o suporte.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                else -> ScreenHelper.createToast(
+                    requireContext(),
+                    "Erro ao selecionar operação. Contate o suporte."
+                )
             }
         }
 

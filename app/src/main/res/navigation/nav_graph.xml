@@ -67,6 +67,9 @@
         <action
             android:id="@+id/action_certificationsFragment_to_manageCertificationFragment"
             app:destination="@id/manageCertificationFragment" />
+        <action
+            android:id="@+id/action_certificationsFragment_to_selectFarmCertificationFragment"
+            app:destination="@id/selectFarmCertificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/createFarmFragment"
@@ -112,9 +115,6 @@
         <action
             android:id="@+id/action_manageCertificationFragment_to_signinFragment"
             app:destination="@id/singinFragment" />
-        <action
-            android:id="@+id/action_manageCertificationFragment_to_manageCertificationItemsFragment3"
-            app:destination="@id/manageCertificationItemsFragment3" />
     </fragment>
     <fragment
         android:id="@+id/singinFragment"
@@ -124,9 +124,10 @@
         <action
             android:id="@+id/action_certificationFragment_to_createModelFragment"
             app:destination="@id/createModelFragment" />
+
         <action
-            android:id="@+id/action_singinFragment_to_manageModelFragment"
-            app:destination="@id/manageModelFragment" />
+            android:id="@+id/action_singinFragment_to_editComponentFragment"
+            app:destination="@id/editComponentFragment" />
     </fragment>
     <fragment
         android:id="@+id/createModelFragment"
@@ -138,13 +139,44 @@
             app:destination="@id/certificationsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/manageModelFragment"
-        android:name="com.example.sustentabilidade.ManageModelFragment"
-        android:label="fragment_manage_model"
-        tools:layout="@layout/fragment_manage_model" />
+        android:id="@+id/editComponentFragment"
+        android:name="com.example.sustentabilidade.fragment.certificationfragments.selectcomponent.EditComponentFragment"
+        android:label="fragment_edit_component"
+        tools:layout="@layout/fragment_edit_component">
+        <action
+            android:id="@+id/action_editComponentFragment_to_certificationsFragment"
+            app:destination="@id/certificationsFragment" />
+        <action
+            android:id="@+id/action_editComponentFragment_to_updateComponentsFragment2"
+            app:destination="@id/updateComponentsFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/manageCertificationItemsFragment3"
-        android:name="com.example.sustentabilidade.ManageCertificationItemsFragment"
-        android:label="fragment_manage_certification_items"
-        tools:layout="@layout/fragment_manage_certification_items" />
+        android:id="@+id/updateComponentsFragment"
+        android:name="com.example.sustentabilidade.UpdateComponentsFragment"
+        android:label="fragment_update_components"
+        tools:layout="@layout/fragment_update_components" />
+    <fragment
+        android:id="@+id/selectFarmCertificationFragment"
+        android:name="com.example.sustentabilidade.SelectFarmCertificationFragment"
+        android:label="fragment_select_farm_certification"
+        tools:layout="@layout/fragment_select_farm_certification">
+        <action
+            android:id="@+id/action_selectFarmCertificationFragment_to_applyCertificationFragment"
+            app:destination="@id/applyCertificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/applyCertificationFragment"
+        android:name="com.example.sustentabilidade.ApplyCertificationFragment"
+        android:label="fragment_apply_certification"
+        tools:layout="@layout/fragment_apply_certification">
+        <action
+            android:id="@+id/action_applyCertificationFragment_to_answerQuestionFragment"
+            app:destination="@id/answerQuestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/answerQuestionFragment"
+        android:name="com.example.sustentabilidade.AnswerQuestionFragment"
+        android:label="fragment_answer_question"
+        tools:layout="@layout/fragment_answer_question" />
+
 </navigation>

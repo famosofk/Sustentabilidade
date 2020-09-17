@@ -63,7 +63,7 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
                 if (weight.isNotEmpty()) {
                     question.weight = weight.toFloat()
                 }
-                certification.getSubtheme(parent)?.addItem(question)
+                certification.getSubTheme(parent)?.addItem(question)
 
             }
 

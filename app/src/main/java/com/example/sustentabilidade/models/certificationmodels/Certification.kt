@@ -10,10 +10,50 @@ open class Certification : RealmObject() {
     var id = UUID.randomUUID().toString()
     var name: String = ""
     var dominionList = RealmList<Dominion>()
+    var dominionNameList = RealmList<String>()
     var dominionNumber = 0
+
+    companion object {
+        const val DOMINION = 0
+        const val THEME = 1
+        const val SUB_THEME = 2
+        const val QUESTION = 3
+    }
+
+    fun getAllNames(parameter: Int): List<String> {
+        val mList = mutableListOf<String>()
+        when (parameter) {
+            Certification.DOMINION -> {
+                mList.addAll(dominionNameList)
+            }
+            Certification.THEME -> {
+                dominionList.forEach {
+                    mList.addAll(it.themeNameList)
+                }
+            }
+            Certification.SUB_THEME -> {
+                dominionList.forEach { dominion ->
+                    dominion.themeList.forEach {
+                        mList.addAll(it.subThemeNameList)
+                    }
+                }
+            }
+            Certification.QUESTION -> {
+                dominionList.forEach { dominion ->
+                    dominion.themeList.forEach { theme ->
+                        theme.subThemeList.forEach {
+                            mList.addAll(it.questionNameList)
+                        }
+                    }
+                }
+            }
+        }
+        return mList
+    }
 
     fun addItem(dominion: Dominion) {
         dominionList.add(dominion)
+        dominionNameList.add(dominion.name)
         incrementNumber()
     }
 
@@ -37,7 +77,7 @@ open class Certification : RealmObject() {
         return null
     }
 
-    fun getSubtheme(name: String): SubTheme? {
+    fun getSubTheme(name: String): SubTheme? {
         dominionList.forEach { dominion ->
             dominion.themeList.forEach { theme ->
                 theme.subThemeList.forEach {

@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.FragmentCreateModelBinding
-import com.example.sustentabilidade.helpers.ScreenHelper
 import com.example.sustentabilidade.models.certificationmodels.Question
 
 class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnClickListener {
@@ -83,7 +82,7 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         parent = viewModel.list[p2]
-        ScreenHelper.createToast(requireContext(), parent)
+
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {}
