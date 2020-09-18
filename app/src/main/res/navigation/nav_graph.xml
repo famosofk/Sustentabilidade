@@ -152,7 +152,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateComponentsFragment"
-        android:name="com.example.sustentabilidade.UpdateComponentsFragment"
+        android:name="com.example.sustentabilidade.fragment.certificationfragments.updatecomponent.UpdateComponentsFragment"
         android:label="fragment_update_components"
         tools:layout="@layout/fragment_update_components" />
     <fragment

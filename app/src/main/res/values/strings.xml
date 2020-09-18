@@ -43,6 +43,9 @@
     <string name="certification_term">Sistemas</string>
     <string name="enter_weight_hint">Padrão: 1</string>
     <string name="define_indicator_weight_text">Definir peso</string>
+    <string name="update_component_intro">Edição de componente</string>
+    <string name="name_term">Nome</string>
+    <string name="delete_term">Delete</string>
 
     <string-array name="models">
         <item>Dimensão</item>
