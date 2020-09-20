@@ -157,7 +157,7 @@
         tools:layout="@layout/fragment_update_components" />
     <fragment
         android:id="@+id/selectFarmCertificationFragment"
-        android:name="com.example.sustentabilidade.SelectFarmCertificationFragment"
+        android:name="com.example.sustentabilidade.fragment.certificationfragments.selectfarmcertitification.SelectFarmCertificationFragment"
         android:label="fragment_select_farm_certification"
         tools:layout="@layout/fragment_select_farm_certification">
         <action

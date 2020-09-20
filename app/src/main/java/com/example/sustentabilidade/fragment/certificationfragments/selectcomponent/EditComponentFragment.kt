@@ -11,17 +11,12 @@ import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.adapters.StringAdapter
 import com.example.sustentabilidade.databinding.FragmentEditComponentBinding
-
 import com.example.sustentabilidade.fragment.certificationfragments.managecertification.CreateCertificationItemClickListener
-
-
 
 class EditComponentFragment : Fragment() {
 
     private lateinit var binding: FragmentEditComponentBinding
-
     private val adapter = StringAdapter()
-
     private lateinit var type: String
     private lateinit var viewModel: EditComponentViewModel
 
@@ -29,18 +24,17 @@ class EditComponentFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_edit_component, container, false
         )
         viewModel = ViewModelProvider(this).get(EditComponentViewModel::class.java)
-        initilizeObservers()
+        initializeObservers()
         verifyArguments()
         return binding.root
     }
 
-    private fun initilizeObservers() {
+    private fun initializeObservers() {
         viewModel.mListUpdated.observe(viewLifecycleOwner, {
             if (it) {
                 adapter.submitList(viewModel.getAdapterList())
@@ -77,7 +71,6 @@ class EditComponentFragment : Fragment() {
         }
     }
 
-
     private fun createBundle(p: Int): Bundle {
         val bundle = Bundle()
         bundle.putString("certificationID", arguments?.getString("certificationID"))
@@ -86,7 +79,5 @@ class EditComponentFragment : Fragment() {
         return bundle
 
     }
-
-
 }
 
