@@ -166,7 +166,7 @@
     </fragment>
     <fragment
         android:id="@+id/applyCertificationFragment"
-        android:name="com.example.sustentabilidade.ApplyCertificationFragment"
+        android:name="com.example.sustentabilidade.fragment.certificationfragments.applycertification.ApplyCertificationFragment"
         android:label="fragment_apply_certification"
         tools:layout="@layout/fragment_apply_certification">
         <action

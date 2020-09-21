@@ -24,8 +24,9 @@ class SelectFarmCertificationFragment : Fragment(), AdapterView.OnItemSelectedLi
     private lateinit var binding: FragmentSelectFarmCertificationBinding
     private lateinit var viewModel: SelectFarmCertificationViewModel
     private lateinit var farmCode: String
-    private lateinit var programName: String
+    private var programName = ""
     private val adapter = StringAdapter()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +39,7 @@ class SelectFarmCertificationFragment : Fragment(), AdapterView.OnItemSelectedLi
             container,
             false
         )
+        binding.farmAdapterTest.onItemSelectedListener = this
         viewModel = ViewModelProvider(this).get(SelectFarmCertificationViewModel::class.java)
         createAdapters()
         attachListToRecyclerView()
@@ -64,35 +66,22 @@ class SelectFarmCertificationFragment : Fragment(), AdapterView.OnItemSelectedLi
             ArrayAdapter(
                 it,
                 android.R.layout.simple_spinner_dropdown_item,
-                viewModel.getProgramList()
+                viewModel.getFarmList()
             )
         }
-        programName = viewModel.getProgramList()[0]
-        binding.selectProgramSpinner.adapter = programAdapter
-        binding.selectFarmSpinner.onItemSelectedListener = this
-        binding.selectProgramSpinner.onItemSelectedListener = this
+        farmCode = viewModel.getFarmList()[0]
+        binding.farmAdapterTest.adapter = programAdapter
+
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        if (p1?.id == R.id.selectProgramSpinner) {
-            programName = viewModel.getProgramList()[p2]
-            val farmAdapter = context?.let {
-                ArrayAdapter(
-                    it,
-                    android.R.layout.simple_spinner_dropdown_item,
-                    viewModel.getFarmList(programName)
-                )
-            }
-            binding.selectFarmSpinner.adapter = farmAdapter
-        } else if (p1?.id == R.id.selectFarmSpinner) {
-            farmCode = viewModel.getFarmList()[p2]
-        }
+        farmCode = binding.farmAdapterTest.selectedItem.toString()
     }
 
     private fun createRecyclerItemClickListener(): CreateCertificationItemClickListener {
         return object : CreateCertificationItemClickListener {
             override fun onClick(p: Int) {
-                if (::farmCode.isInitialized) {
+                if (farmCode != "") {
                     binding.root.findNavController()
                         .navigate(
                             R.id.action_selectFarmCertificationFragment_to_applyCertificationFragment,
@@ -112,7 +101,7 @@ class SelectFarmCertificationFragment : Fragment(), AdapterView.OnItemSelectedLi
         results[p]?.id
         bundle.putString("program", programName)
         bundle.putString("farmCode", farmCode)
-        bundle.putString("certificationName", results[p]?.id)
+        bundle.putString("certificationID", results[p]?.id)
         return bundle
     }
 

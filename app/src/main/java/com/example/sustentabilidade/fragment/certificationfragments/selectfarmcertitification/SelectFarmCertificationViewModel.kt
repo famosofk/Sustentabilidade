@@ -3,7 +3,6 @@ package com.example.sustentabilidade.fragment.certificationfragments.selectfarmc
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.example.sustentabilidade.models.gestaomodels.Farm
-import com.example.sustentabilidade.models.gestaomodels.Program
 import io.realm.Realm
 import io.realm.kotlin.where
 
@@ -14,13 +13,13 @@ class SelectFarmCertificationViewModel(application: Application) : AndroidViewMo
     private val listFarm = mutableListOf<String>()
 
 
-    fun getProgramList(): List<String> {
+    fun getFarmList(): List<String> {
         if (listProgram.size != 0) {
             return listProgram
         }
-        val results = realm.where<Program>().findAll()
+        val results = realm.where<Farm>().findAll()
         results.forEach {
-            listProgram.add(it.name)
+            listProgram.add(it.codigoFazenda)
         }
         return listProgram
     }

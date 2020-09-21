@@ -20,45 +20,10 @@
             android:text="@string/select_farm_intro"
             android:textColor="@color/colorPrimaryDark" />
 
-        <LinearLayout
+        <Spinner
+            android:id="@+id/farmAdapterTest"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/edittext_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/program_term" />
-
-            <TextView
-                style="@style/edittext_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/farm_term" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/selectProgramSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:textAlignment="center" />
-
-            <Spinner
-                android:id="@+id/selectFarmSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:textAlignment="center" />
-        </LinearLayout>
+            android:layout_height="wrap_content" />
 
         <TextView
             style="@style/textview_title"
