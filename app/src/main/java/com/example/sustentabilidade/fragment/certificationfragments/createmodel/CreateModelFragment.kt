@@ -57,7 +57,6 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
             binding.parentModelSpinner.visibility = View.GONE
             binding.associateTextView.visibility = View.GONE
         } else {
-
             viewModel.initializeList(arguments?.getString("type")!!)
             val adapter = context?.let {
                 ArrayAdapter(
@@ -67,7 +66,6 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
             }
             binding.parentModelSpinner.adapter = adapter
             binding.parentModelSpinner.onItemSelectedListener = this
-
             if (arguments?.getString("type")!! == "Indicador") {
                 binding.indicatorTypeTextView.visibility = View.VISIBLE
                 binding.defineWeightSwitch.visibility = View.VISIBLE
@@ -77,27 +75,22 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
         }
         binding.finishSignInButton.setOnClickListener(this)
         binding.signInAgainButton.setOnClickListener(this)
-
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         parent = viewModel.list[p2]
-
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {}
 
     override fun onClick(p0: View?) {
         if (p0?.id == R.id.defineWeightSwitch) {
-
             if (binding.defineWeightSwitch.isChecked) {
                 binding.weightIndicatorSignIn.visibility = View.VISIBLE
             } else {
                 binding.weightIndicatorSignIn.visibility = View.GONE
             }
-
         } else {
-
             var command = 0
             if (p0?.id == R.id.finishSignInButton) {
                 command = 1
@@ -107,7 +100,6 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
             } else {
                 indicatorType = Question.VALUE_INDICATOR_TYPE
             }
-
             viewModel.createModel(
                 arguments?.getString("type")!!,
                 binding.inputNameSignIn.text.toString(),

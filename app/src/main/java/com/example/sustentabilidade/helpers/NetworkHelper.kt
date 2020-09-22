@@ -31,8 +31,6 @@ class NetworkHelper {
                 }
             }
             return false
-
         }
-
     }
 }

@@ -1,5 +1,6 @@
 package com.example.sustentabilidade.fragment.certificationfragments.applycertification
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,6 +47,7 @@ class ApplyCertificationFragment : Fragment() {
         initializeCertification(arguments?.getString("certificationID")!!)
         type = array[0]
         binding.toolbar2.title = "${certification.name}: $type"
+        binding.toolbar2.setTitleTextColor(Color.WHITE)
         setUpAdapter()
     }
 

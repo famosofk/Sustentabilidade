@@ -69,13 +69,11 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
 
         }
         realm.commitTransaction()
-
         if (command == 0) {
             repeat.value = true
         } else {
             finish.value = true
         }
-
     }
 
     fun turnRepetBackToFalse() {
@@ -106,8 +104,5 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
                 list = mList
             }
         }
-
     }
-
-
 }

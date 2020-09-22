@@ -46,6 +46,7 @@ class EditComponentViewModel(application: Application) : AndroidViewModel(applic
                 componentsList = certification.getAllNames(Certification.QUESTION)
             }
         }
+        listUpdated.value = true
     }
 
 
