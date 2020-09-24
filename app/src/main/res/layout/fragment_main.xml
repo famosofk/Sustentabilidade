@@ -24,7 +24,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat"
                 android:gravity="center"
-                android:text="Certificações"
+                android:text="@string/system_term"
                 android:textColor="@android:color/white"
                 android:textSize="56sp" />
 
@@ -42,7 +42,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat"
                 android:gravity="center"
-                android:text="Fazendas"
+                android:text="@string/farm_term"
                 android:textColor="@android:color/white"
                 android:textSize="56sp" />
 

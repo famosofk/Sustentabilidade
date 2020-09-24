@@ -1,12 +1,11 @@
 <resources>
-    <string name="app_name">Sustainability</string>
+    <string name="app_name">Sustentabilidade</string>
     <string name="login_intro_message">LOGIN</string>
     <string name="email_address">Endereço de e-mail</string>
     <string name="senha_intro_message">Senha</string>
     <string name="login_message">Entrar</string>
     <string name="cadastrar_intro_message">Cadastrar</string>
     <string name="logo_description">Agroplus logo</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="register_intro_message">Registro</string>
     <string name="account_type_message_intro">Tipo de conta</string>
@@ -26,9 +25,9 @@
     <string name="success_saving_farm">Fazenda salva com sucesso.</string>
     <string name="alertdialog_body_intro_message">Insira a senha para participar desta fazenda.</string>
     <string name="alertdialog_title_intro_message">Participar de fazenda</string>
-    <string name="create_certification_intro">Criar certificado</string>
-    <string name="manage_certification_intro">Gerenciar certificados</string>
-    <string name="create_certification_button_desc">botão de criar certificado.</string>
+    <string name="create_certification_intro">Criar sistema</string>
+    <string name="manage_certification_intro">Gerenciar sistemas</string>
+    <string name="create_certification_button_desc">botão de criar sistemas.</string>
     <string name="dominion_term">Domínio</string>
     <string name="theme_term">Tema</string>
     <string name="subtheme_term">Sub Tema</string>
@@ -50,6 +49,7 @@
     <string name="program_term">Programa</string>
     <string name="farm_term">Fazenda</string>
     <string name="select_system_intro">Selecionar sistema</string>
+    <string name="system_term">Sistemas</string>
 
     <string-array name="models">
         <item>Dimensão</item>
