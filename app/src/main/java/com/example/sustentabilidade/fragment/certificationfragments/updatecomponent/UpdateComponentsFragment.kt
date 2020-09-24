@@ -35,13 +35,29 @@ class UpdateComponentsFragment : Fragment() {
         )
         realm = Realm.getDefaultInstance()
         configureUI()
+        clickListeners()
         return binding.root
     }
 
     private fun clickListeners() {
-        binding.deleteEditButton.setOnClickListener { }
+        realm.beginTransaction()
+        binding.deleteEditButton.setOnClickListener {
+            when (type) {
+                array[0] -> {
+                    certification.removeItem(certification.getDominion(name)!!)
+                }
+                array[1] -> {
+                    certification.removeItem(certification.getTheme(name)!!)
+                }
+                array[2] -> {
+                    certification.removeItem(certification.getSubTheme(name)!!)
+                }
+                array[3] -> {
+                    certification.removeItem(certification.getQuestion(name)!!)
+                }
+            }
+        }
         binding.finishEditButton.setOnClickListener {
-            realm.beginTransaction()
             when (type) {
                 array[0] -> certification.getDominion(name)?.name =
                     binding.updateComponentName.text.toString()
@@ -55,6 +71,7 @@ class UpdateComponentsFragment : Fragment() {
                 }
             }
         }
+        realm.commitTransaction()
     }
 
 

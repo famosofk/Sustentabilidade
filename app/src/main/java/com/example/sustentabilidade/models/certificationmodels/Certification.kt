@@ -107,7 +107,40 @@ open class Certification : RealmObject() {
 
     fun removeItem(dominion: Dominion) {
         dominionList.remove(dominion)
+        dominionNameList.remove(dominion.name)
+        dominionNumber -= 1;
         Realm.getDefaultInstance().where<Dominion>().contains("id", dominion.id).findAll()
+            .deleteAllFromRealm()
+        decrementNumber()
+    }
+
+    fun removeItem(theme: Theme) {
+        val parent = getDominion(theme.parent)!!
+        parent.themeNameList.remove(theme.name)
+        parent.themeList.remove(theme)
+        parent.themeNumber -= 1;
+
+        Realm.getDefaultInstance().where<Theme>().contains("id", theme.id).findAll()
+            .deleteAllFromRealm()
+        decrementNumber()
+    }
+
+    fun removeItem(subtheme: SubTheme) {
+        val parent = getTheme(subtheme.parent)!!
+        parent.subThemeNameList.remove(subtheme.name)
+        parent.subThemeList.remove(subtheme);
+        parent.subThemeNumber -= 1
+        Realm.getDefaultInstance().where<SubTheme>().contains("id", subtheme.id).findAll()
+            .deleteAllFromRealm()
+        decrementNumber()
+    }
+
+    fun removeItem(question: Question) {
+        val parent = getSubTheme(question.parent)!!
+        parent.questionNameList.remove(question.name)
+        parent.questionList.remove(question)
+        parent.questionNumber -= 1
+        Realm.getDefaultInstance().where<Dominion>().contains("id", question.id).findAll()
             .deleteAllFromRealm()
         decrementNumber()
     }
