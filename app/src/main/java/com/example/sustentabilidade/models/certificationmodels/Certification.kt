@@ -90,6 +90,21 @@ open class Certification : RealmObject() {
         return null
     }
 
+    fun getQuestion(name: String): Question? {
+        dominionList.forEach { dominion ->
+            dominion.themeList.forEach { theme ->
+                theme.subThemeList.forEach { subtheme ->
+                    subtheme.questionList.forEach {
+                        if (name == it.name) {
+                            return it
+                        }
+                    }
+                }
+            }
+        }
+        return null
+    }
+
     fun removeItem(dominion: Dominion) {
         dominionList.remove(dominion)
         Realm.getDefaultInstance().where<Dominion>().contains("id", dominion.id).findAll()

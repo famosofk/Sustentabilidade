@@ -46,6 +46,10 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
             if (it) {
                 binding.inputNameSignIn.text.clear()
                 viewModel.turnRepetBackToFalse()
+                binding.weightIndicatorSignIn.text.clear()
+                binding.defineWeightSwitch.isChecked = false
+                binding.indicatorTypeRadioGroup.clearCheck()
+                binding.weightIndicatorSignIn.visibility = View.GONE
             }
         })
     }
