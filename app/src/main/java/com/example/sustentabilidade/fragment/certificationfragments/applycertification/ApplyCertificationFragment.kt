@@ -12,7 +12,6 @@ import com.example.sustentabilidade.R
 import com.example.sustentabilidade.adapters.StringAdapter
 import com.example.sustentabilidade.databinding.FragmentApplyCertificationBinding
 import com.example.sustentabilidade.fragment.certificationfragments.managecertification.CreateCertificationItemClickListener
-import com.example.sustentabilidade.helpers.ScreenHelper
 import com.example.sustentabilidade.models.certificationmodels.Certification
 import io.realm.Realm
 import io.realm.kotlin.where
@@ -60,7 +59,6 @@ class ApplyCertificationFragment : Fragment() {
     }
 
     private fun submitListAdapter(p: Int) {
-        ScreenHelper.createToast(requireContext(), "entrou")
         val string = list[p]
         list.clear()
         when (type) {
@@ -80,7 +78,6 @@ class ApplyCertificationFragment : Fragment() {
         binding.toolbar2.title = "${certification.name}: $type"
         adapter.submitList(null)
         adapter.submitList(list)
-
     }
 
     private fun createRecyclerItemClickListener(): CreateCertificationItemClickListener {
@@ -89,7 +86,7 @@ class ApplyCertificationFragment : Fragment() {
                 if (type == array[3]) {
                     binding.root.findNavController().navigate(
                         R.id.action_applyCertificationFragment_to_answerQuestionFragment,
-                        createBundle()
+                        createBundle(p)
                     )
                 } else {
                     submitListAdapter(p)
@@ -98,8 +95,10 @@ class ApplyCertificationFragment : Fragment() {
         }
     }
 
-    private fun createBundle(): Bundle {
+    private fun createBundle(p: Int): Bundle {
         val bundle = Bundle()
+        bundle.putString("certificationID", certification.id)
+        bundle.putString("question", certification.getQuestion(list[p])!!.id)
         return bundle
     }
 

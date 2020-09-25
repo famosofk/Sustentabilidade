@@ -50,6 +50,11 @@
     <string name="farm_term">Fazenda</string>
     <string name="select_system_intro">Selecionar sistema</string>
     <string name="system_term">Sistemas</string>
+    <string name="true_term">Verdadeiro</string>
+    <string name="false_term">Falso</string>
+    <string name="non_applicable_term">Não se aplica</string>
+    <string name="note_term">Observações</string>
+    <string name="value_term">Valor</string>
 
     <string-array name="models">
         <item>Dimensão</item>
