@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.adapters.StringAdapter
 import com.example.sustentabilidade.databinding.FragmentApplyCertificationBinding
@@ -20,7 +21,7 @@ class ApplyCertificationFragment : Fragment() {
 
     private lateinit var binding: FragmentApplyCertificationBinding
     private val adapter = StringAdapter()
-    private lateinit var type: String
+    private var type = ""
     private val list = mutableListOf<String>()
     private lateinit var certification: Certification
     lateinit var array: Array<String>
@@ -44,7 +45,9 @@ class ApplyCertificationFragment : Fragment() {
 
     private fun recoveryData() {
         initializeCertification(arguments?.getString("certificationID")!!)
-        type = array[0]
+        if (type == "") {
+            type = array[0]
+        }
         binding.toolbar2.title = "${certification.name}: $type"
         binding.toolbar2.setTitleTextColor(Color.WHITE)
         setUpAdapter()
@@ -52,8 +55,12 @@ class ApplyCertificationFragment : Fragment() {
 
     private fun setUpAdapter() {
         adapter.attachListener(createRecyclerItemClickListener())
+        binding.applyCertificationAdapter.layoutManager = LinearLayoutManager(context)
+        binding.applyCertificationAdapter.itemAnimator = null
         binding.applyCertificationAdapter.adapter = adapter
-        list.addAll(certification.dominionNameList)
+        if (list.size == 0) {
+            list.addAll(certification.dominionNameList)
+        }
         adapter.submitList(list)
 
     }
@@ -75,9 +82,11 @@ class ApplyCertificationFragment : Fragment() {
                 type = array[3]
             }
         }
-        binding.toolbar2.title = "${certification.name}: $type"
         adapter.submitList(null)
         adapter.submitList(list)
+        binding.toolbar2.title = "${certification.name}: $type"
+
+
     }
 
     private fun createRecyclerItemClickListener(): CreateCertificationItemClickListener {
@@ -99,6 +108,7 @@ class ApplyCertificationFragment : Fragment() {
         val bundle = Bundle()
         bundle.putString("certificationID", certification.id)
         bundle.putString("question", certification.getQuestion(list[p])!!.id)
+        bundle.putString("farmCode", arguments?.getString("farmCode")!!)
         return bundle
     }
 

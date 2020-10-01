@@ -175,8 +175,15 @@
     </fragment>
     <fragment
         android:id="@+id/answerQuestionFragment"
-        android:name="com.example.sustentabilidade.AnswerQuestionFragment"
+        android:name="com.example.sustentabilidade.fragment.certificationfragments.answerquestionfragment.AnswerQuestionFragment"
         android:label="fragment_answer_question"
-        tools:layout="@layout/fragment_answer_question" />
+        tools:layout="@layout/fragment_answer_question">
+        <action
+            android:id="@+id/action_answerQuestionFragment_to_applyCertificationFragment"
+            app:destination="@id/applyCertificationFragment" />
+        <action
+            android:id="@+id/action_answerQuestionFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 
 </navigation>

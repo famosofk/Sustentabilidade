@@ -1,17 +1,14 @@
 package com.example.sustentabilidade.models.certificationmodels
 
+import io.realm.RealmObject
 import java.util.*
 
-class Answer {
+open class Answer : RealmObject() {
 
     var id = UUID.randomUUID().toString()
     var observacao = ""
-    var párentID = ""
+    var parentID = ""
     var farmID = ""
-    var dominionPosition = 0
-    var themePosition = 0
-    var subThemePosition = 0
-    var questionPosition = 0
 
     var value = 0f
 

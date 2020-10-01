@@ -55,6 +55,7 @@
     <string name="non_applicable_term">Não se aplica</string>
     <string name="note_term">Observações</string>
     <string name="value_term">Valor</string>
+    <string name="answer_other_intro">Responder outra</string>
 
     <string-array name="models">
         <item>Dimensão</item>

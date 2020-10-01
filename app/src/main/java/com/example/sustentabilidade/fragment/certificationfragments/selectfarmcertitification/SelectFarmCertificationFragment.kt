@@ -99,7 +99,6 @@ class SelectFarmCertificationFragment : Fragment(), AdapterView.OnItemSelectedLi
         val realm = Realm.getDefaultInstance()
         val results = realm.where<Certification>().findAll()
         results[p]?.id
-        bundle.putString("program", programName)
         bundle.putString("farmCode", farmCode)
         bundle.putString("certificationID", results[p]?.id)
         return bundle

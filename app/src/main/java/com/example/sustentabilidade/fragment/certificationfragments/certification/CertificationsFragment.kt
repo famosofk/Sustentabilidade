@@ -42,7 +42,7 @@ class CertificationsFragment : Fragment() {
 
             val realm = Realm.getDefaultInstance()
             val results = realm.where<Farm>().findAll()
-            if (results.size >= 0) {
+            if (results.size > 0) {
                 binding.root.findNavController()
                     .navigate(R.id.action_certificationsFragment_to_selectFarmCertificationFragment)
             } else {
