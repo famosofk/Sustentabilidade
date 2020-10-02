@@ -56,6 +56,8 @@
     <string name="note_term">Observações</string>
     <string name="value_term">Valor</string>
     <string name="answer_other_intro">Responder outra</string>
+    <string name="prazo_term">Prazo</string>
+    <string name="notes_intro">"Necessário preencher observação e data."</string>
 
     <string-array name="models">
         <item>Dimensão</item>

@@ -12,6 +12,17 @@ open class Certification : RealmObject() {
     var dominionList = RealmList<Dominion>()
     var dominionNameList = RealmList<String>()
     var dominionNumber = 0
+    var themeList = RealmList<Theme>()
+    var themeNameList = RealmList<String>()
+    var themeNumber = 0
+    var subThemeList = RealmList<SubTheme>()
+    var subThemeNameList = RealmList<String>()
+    var subThemeNumber = 0
+    var questionList = RealmList<Question>()
+    var questionNameList = RealmList<String>()
+    var questionNumber = 0
+
+    //Bring theme, subtheme and question to here
 
     companion object {
         const val DOMINION = 0
@@ -21,40 +32,37 @@ open class Certification : RealmObject() {
     }
 
     fun getAllNames(parameter: Int): List<String> {
-        val mList = mutableListOf<String>()
         when (parameter) {
-            Certification.DOMINION -> {
-                mList.addAll(dominionNameList)
-            }
-            Certification.THEME -> {
-                dominionList.forEach {
-                    mList.addAll(it.themeNameList)
-                }
-            }
-            Certification.SUB_THEME -> {
-                dominionList.forEach { dominion ->
-                    dominion.themeList.forEach {
-                        mList.addAll(it.subThemeNameList)
-                    }
-                }
-            }
-            Certification.QUESTION -> {
-                dominionList.forEach { dominion ->
-                    dominion.themeList.forEach { theme ->
-                        theme.subThemeList.forEach {
-                            mList.addAll(it.questionNameList)
-                        }
-                    }
-                }
-            }
+            Certification.DOMINION -> return questionNameList
+            Certification.THEME -> return themeNameList
+            Certification.SUB_THEME -> return subThemeNameList
+            Certification.QUESTION -> return questionNameList
         }
-        return mList
+        return listOf()
     }
 
     fun addItem(dominion: Dominion) {
         dominionList.add(dominion)
         dominionNameList.add(dominion.name)
-        incrementNumber()
+        dominionNumber++
+    }
+
+    fun addItem(theme: Theme) {
+        themeList.add(theme)
+        themeNameList.add(theme.name)
+        themeNumber++
+    }
+
+    fun addItem(subTheme: SubTheme) {
+        subThemeList.add(subTheme)
+        subThemeNameList.add(subTheme.name)
+        subThemeNumber++
+    }
+
+    fun addItem(question: Question) {
+        questionList.add(question)
+        questionNameList.add(question.name)
+        questionNumber++
     }
 
     fun getDominion(name: String): Dominion? {
@@ -65,92 +73,97 @@ open class Certification : RealmObject() {
         }
         return null
     }
-
     fun getTheme(name: String): Theme? {
-        dominionList.forEach { dominion ->
-            dominion.themeList.forEach {
-                if (it.name == name) {
-                    return it
-                }
+        themeList.forEach {
+            if (it.name == name) {
+                return it
             }
         }
         return null
     }
-
     fun getSubTheme(name: String): SubTheme? {
-        dominionList.forEach { dominion ->
-            dominion.themeList.forEach { theme ->
-                theme.subThemeList.forEach {
-                    if (it.name == name) {
-                        return it
-                    }
-                }
+        subThemeList.forEach {
+            if (it.name == name) {
+                return it
+            }
+        }
+        return null
+    }
+    fun getQuestion(name: String): Question? {
+        questionList.forEach {
+            if (it.name == name) {
+                return it
             }
         }
         return null
     }
 
-    fun getQuestion(name: String): Question? {
-        dominionList.forEach { dominion ->
-            dominion.themeList.forEach { theme ->
-                theme.subThemeList.forEach { subtheme ->
-                    subtheme.questionList.forEach {
-                        if (name == it.name) {
-                            return it
-                        }
-                    }
-                }
-            }
-        }
-        return null
-    }
 
     fun removeItem(dominion: Dominion) {
         dominionList.remove(dominion)
         dominionNameList.remove(dominion.name)
-        dominionNumber -= 1;
+        dominionNumber -= 1
         Realm.getDefaultInstance().where<Dominion>().contains("id", dominion.id).findAll()
             .deleteAllFromRealm()
-        decrementNumber()
+        dominionNumber--
     }
 
     fun removeItem(theme: Theme) {
-        val parent = getDominion(theme.parent)!!
-        parent.themeNameList.remove(theme.name)
-        parent.themeList.remove(theme)
-        parent.themeNumber -= 1;
-
+        themeNameList.remove(theme.name)
+        themeList.remove(theme)
+        themeNumber -= 1
         Realm.getDefaultInstance().where<Theme>().contains("id", theme.id).findAll()
             .deleteAllFromRealm()
-        decrementNumber()
+        themeNumber--
     }
 
-    fun removeItem(subtheme: SubTheme) {
-        val parent = getTheme(subtheme.parent)!!
-        parent.subThemeNameList.remove(subtheme.name)
-        parent.subThemeList.remove(subtheme);
-        parent.subThemeNumber -= 1
-        Realm.getDefaultInstance().where<SubTheme>().contains("id", subtheme.id).findAll()
+    fun removeItem(subTheme: SubTheme) {
+        subThemeNameList.remove(subTheme.name)
+        subThemeList.remove(subTheme)
+        subThemeNumber -= 1
+        Realm.getDefaultInstance().where<SubTheme>().contains("id", subTheme.id).findAll()
             .deleteAllFromRealm()
-        decrementNumber()
+        subThemeNumber--
     }
 
     fun removeItem(question: Question) {
-        val parent = getSubTheme(question.parent)!!
-        parent.questionNameList.remove(question.name)
-        parent.questionList.remove(question)
-        parent.questionNumber -= 1
-        Realm.getDefaultInstance().where<Dominion>().contains("id", question.id).findAll()
+        questionList.remove(question)
+        questionNameList.remove(question.name)
+        questionNumber -= 1
+        Realm.getDefaultInstance().where<Question>().contains("id", question.id).findAll()
             .deleteAllFromRealm()
-        decrementNumber()
+        questionNumber--
     }
 
-    private fun incrementNumber() {
-        dominionNumber++
+    fun getThemesOfDominion(parentName: String): List<String> {
+        val list = mutableListOf<String>()
+        themeList.forEach {
+            if (it.parent == parentName) {
+                list.add(it.name)
+            }
+        }
+        return list
     }
 
-    private fun decrementNumber() {
-        dominionNumber--
+    fun getSubThemesOfTheme(parentName: String): List<String> {
+        val list = mutableListOf<String>()
+        subThemeList.forEach {
+            if (it.parent == parentName) {
+                list.add(it.name)
+            }
+        }
+        return list
     }
+
+    fun getQuestionsOfSubTheme(parentName: String): List<String> {
+        val list = mutableListOf<String>()
+        questionList.forEach {
+            if (it.parent == parentName) {
+                list.add(it.name)
+            }
+        }
+        return list
+    }
+
 
 }

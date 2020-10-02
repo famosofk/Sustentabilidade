@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.FragmentAnswerQuestionBinding
+import com.example.sustentabilidade.helpers.ScreenHelper
 import com.example.sustentabilidade.models.certificationmodels.Answer
 import com.example.sustentabilidade.models.certificationmodels.Question
 
@@ -46,11 +47,19 @@ class AnswerQuestionFragment : Fragment() {
             binding.textViewValueAnswer.visibility = View.VISIBLE
         }
         binding.questionNameApplySystemTextView.text = question.name
+        binding.switchNoteAnswer.setOnClickListener {
+            if (binding.switchNoteAnswer.isChecked) {
+                binding.noteLinearLayout.visibility = View.VISIBLE
+            } else {
+                binding.noteLinearLayout.visibility = View.GONE
+            }
+        }
     }
 
     private fun setListeners() {
         binding.saveAnswerApplySystemEditText.setOnClickListener {
-            generateAnswer()
+            val answer = generateAnswer()
+            answer?.let { ans -> viewModel.saveQuestion(ans) }
             binding.root.findNavController()
                 .navigate(R.id.action_answerQuestionFragment_to_mainFragment)
         }
@@ -64,10 +73,26 @@ class AnswerQuestionFragment : Fragment() {
         }
     }
 
-    private fun generateAnswer() {
+    private fun generateAnswer(): Answer? {
         val answer = Answer()
         answer.parentID = arguments?.getString("question")!!
-        answer.observacao = binding.noteAnswerApplySystemEditText.text.toString()
+        answer.farmID = arguments?.getString("farmCode")!!
+        if (binding.switchNoteAnswer.isChecked) {
+            if (binding.noteAnswerApplySystemEditText.text.toString().isNotEmpty() &&
+                binding.dateAnswerApplySystemEditText.text.toString().isNotEmpty()
+            ) {
+                answer.note = binding.noteAnswerApplySystemEditText.text.toString()
+                answer.deliveryDate = binding.dateAnswerApplySystemEditText.text.toString()
+            } else {
+                ScreenHelper.createToast(
+                    requireContext(),
+                    resources.getString(R.string.notes_intro)
+                )
+                return null
+            }
+        }
+        return answer
+
     }
 
     private fun generateBundle(): Bundle {

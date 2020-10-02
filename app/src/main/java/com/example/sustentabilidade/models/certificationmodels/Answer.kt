@@ -6,10 +6,9 @@ import java.util.*
 open class Answer : RealmObject() {
 
     var id = UUID.randomUUID().toString()
-    var observacao = ""
+    var note = ""
     var parentID = ""
     var farmID = ""
-
     var value = 0f
-
+    var deliveryDate = ""
 }

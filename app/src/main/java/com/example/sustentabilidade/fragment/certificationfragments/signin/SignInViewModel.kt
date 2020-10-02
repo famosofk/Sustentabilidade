@@ -24,24 +24,17 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
 
     fun verifyTheme(): Boolean {
         if (verifyDominion()) {
-            certification.dominionList.forEach {
-                if (it.themeNumber > 0) {
+                if (certification.themeNumber > 0) {
                     return true
                 }
-            }
         }
         return false
     }
 
-
     fun verifySubTheme(): Boolean {
         if (verifyTheme()) {
-            certification.dominionList.forEach { it ->
-                it.themeList.forEach { itTheme ->
-                    if (itTheme.subThemeNumber > 0) {
-                        return true
-                    }
-                }
+            if (certification.subThemeNumber > 0) {
+                return true
             }
         }
         return false

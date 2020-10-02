@@ -79,21 +79,50 @@
             android:textAlignment="center"
             android:visibility="gone" />
 
-        <TextView
-            style="@style/edittext_title"
+        <Switch
+            android:id="@+id/switchNoteAnswer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/note_term" />
+            android:text="Adicionar observação?" />
 
-        <EditText
-            android:id="@+id/noteAnswerApplySystemEditText"
-            style="@style/editText_style"
+        <LinearLayout
+            android:id="@+id/noteLinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/edittext_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/note_term" />
+
+            <EditText
+                android:id="@+id/noteAnswerApplySystemEditText"
+                style="@style/editText_style"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                style="@style/edittext_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/prazo_term" />
+
+            <EditText
+                android:id="@+id/dateAnswerApplySystemEditText"
+                style="@style/editText_style"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:ems="10"
+                android:inputType="date" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

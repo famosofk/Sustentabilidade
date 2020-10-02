@@ -11,7 +11,7 @@ import io.realm.kotlin.where
 class CreateModelViewModel(application: Application) : AndroidViewModel(application) {
 
     val realm = Realm.getDefaultInstance()
-    lateinit var list: List<String>
+    var list = mutableListOf<String>()
     private lateinit var certification: Certification
     private lateinit var modelType: Array<String>
 
@@ -49,12 +49,12 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
             modelType[1] -> {
                 val theme = Theme(name)
                 theme.parent = parent
-                certification.getDominion(parent)?.addItem(theme)
+                certification.addItem(theme)
             }
             modelType[2] -> {
                 val subTheme = SubTheme(name)
                 subTheme.parent = parent
-                certification.getTheme(parent)?.addItem(subTheme)
+                certification.addItem(subTheme)
             }
             modelType[3] -> {
                 val question = Question(name)
@@ -63,7 +63,7 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
                 if (weight.isNotEmpty()) {
                     question.weight = weight.toFloat()
                 }
-                certification.getSubTheme(parent)?.addItem(question)
+                certification.addItem(question)
 
             }
 
@@ -81,28 +81,16 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     fun initializeList(type: String) {
-        val mList = mutableListOf<String>()
+        list.clear()
         when (type) {
-            modelType[1] -> {
-                certification.dominionList.forEach { mList.add(it.name) }
-                list = mList
-            }
-            modelType[2] -> {
-                certification.dominionList.forEach { dominion ->
-                    dominion.themeList.forEach { mList.add(it.name) }
-                }
-                list = mList
-            }
-            modelType[3] -> {
-                certification.dominionList.forEach { dominion ->
-                    dominion.themeList.forEach { theme ->
-                        theme.subThemeList.forEach {
-                            mList.add(it.name)
-                        }
-                    }
-                }
-                list = mList
-            }
+            modelType[1] ->
+                list = certification.dominionNameList
+
+            modelType[2] ->
+                list = certification.themeNameList
+
+            modelType[3] ->
+                list = certification.subThemeNameList
         }
     }
 }

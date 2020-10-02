@@ -70,15 +70,15 @@ class ApplyCertificationFragment : Fragment() {
         list.clear()
         when (type) {
             array[0] -> {
-                list.addAll(certification.getDominion(string)!!.themeNameList)
+                list.addAll(certification.themeNameList)
                 type = array[1]
             }
             array[1] -> {
-                list.addAll(certification.getTheme(string)!!.subThemeNameList)
+                list.addAll(certification.subThemeNameList)
                 type = array[2]
             }
             array[2] -> {
-                list.addAll(certification.getSubTheme(string)!!.questionNameList)
+                list.addAll(certification.questionNameList)
                 type = array[3]
             }
         }

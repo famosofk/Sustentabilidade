@@ -81,7 +81,7 @@ class SignInFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnCl
                         if (viewModel.verifyDominion()) {
                             enableNavigation(p0.id)
                         } else {
-                            ScreenHelper.createToast(requireContext(), "Crie um domínio primeiro")
+                            ScreenHelper.createToast(requireContext(), "Crie uma dimensão primeiro")
                         }
                     }
                 }
@@ -89,7 +89,7 @@ class SignInFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnCl
                     if (viewModel.verifyDominion()) {
                         enableNavigation(p0.id)
                     } else {
-                        ScreenHelper.createToast(requireContext(), "Crie um domínio primeiro.")
+                        ScreenHelper.createToast(requireContext(), "Crie uma dimensão primeiro.")
                     }
                 }
                 array[2] -> {
