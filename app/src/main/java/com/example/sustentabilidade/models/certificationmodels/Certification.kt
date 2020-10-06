@@ -21,6 +21,8 @@ open class Certification : RealmObject() {
     var questionList = RealmList<Question>()
     var questionNameList = RealmList<String>()
     var questionNumber = 0
+    var levelList = RealmList<Level>()
+    var levelNameList = RealmList<String>()
 
     //Bring theme, subtheme and question to here
 
@@ -39,6 +41,11 @@ open class Certification : RealmObject() {
             Certification.QUESTION -> return questionNameList
         }
         return listOf()
+    }
+
+    fun addItem(level: Level) {
+        levelList.add(level)
+        levelNameList.add(level.name)
     }
 
     fun addItem(dominion: Dominion) {
@@ -89,8 +96,18 @@ open class Certification : RealmObject() {
         }
         return null
     }
+
     fun getQuestion(name: String): Question? {
         questionList.forEach {
+            if (it.name == name) {
+                return it
+            }
+        }
+        return null
+    }
+
+    fun getLevel(name: String): Level? {
+        levelList.forEach {
             if (it.name == name) {
                 return it
             }
@@ -106,6 +123,15 @@ open class Certification : RealmObject() {
         Realm.getDefaultInstance().where<Dominion>().contains("id", dominion.id).findAll()
             .deleteAllFromRealm()
         dominionNumber--
+
+    }
+
+    fun removeItem(level: Level) {
+        levelList.remove(level)
+        levelNameList.remove(level.name)
+        dominionNumber -= 1
+        Realm.getDefaultInstance().where<Dominion>().contains("id", level.id).findAll()
+            .deleteAllFromRealm()
     }
 
     fun removeItem(theme: Theme) {

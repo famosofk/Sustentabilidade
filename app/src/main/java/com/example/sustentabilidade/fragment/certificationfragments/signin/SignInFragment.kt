@@ -31,7 +31,6 @@ class SignInFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnCl
         certificationID = arguments?.getString("certificationID")!!
         binding.certificationTitle.text = arguments?.getString("certificationName")!!
         enableListeners()
-
         return binding.root
     }
 
