@@ -31,6 +31,7 @@ open class Certification : RealmObject() {
         const val THEME = 1
         const val SUB_THEME = 2
         const val QUESTION = 3
+        const val LEVEL = 4
     }
 
     fun getAllNames(parameter: Int): List<String> {
@@ -39,6 +40,7 @@ open class Certification : RealmObject() {
             Certification.THEME -> return themeNameList
             Certification.SUB_THEME -> return subThemeNameList
             Certification.QUESTION -> return questionNameList
+            Certification.LEVEL -> return levelNameList
         }
         return listOf()
     }
