@@ -30,9 +30,19 @@ class AnswerQuestionFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_answer_question, container, false)
         viewModel = ViewModelProvider(this).get(AnswerQuestionViewModel::class.java)
         setListeners()
+        setObservers()
         updateUI(viewModel.getQuestion(arguments?.getString("question")!!))
 
         return binding.root
+    }
+
+    private fun setObservers() {
+        viewModel.allQuestionsAnswered.observe(viewLifecycleOwner, {
+            if (it) {
+                ScreenHelper.createToast(requireContext(), "Todas as perguntas foram respondidas")
+                viewModel.allQuestionsAnswered.value = !(viewModel.allQuestionsAnswered.value)!!
+            }
+        })
     }
 
     private fun updateUI(question: Question) {
@@ -40,12 +50,8 @@ class AnswerQuestionFragment : Fragment() {
             arguments?.getString("farmCode")!!,
             arguments?.getString("certificationID")!!
         )
-        if (question.type == Question.BOOLEAN_INDICATOR_TYPE) {
-            binding.booleanOptions.visibility = View.VISIBLE
-        } else {
-            binding.degreeValueApplySystemEditText.visibility = View.VISIBLE
-            binding.textViewValueAnswer.visibility = View.VISIBLE
-        }
+        binding.booleanOptions.visibility = View.VISIBLE
+        ScreenHelper.createToast(requireContext(), "${question.index}")
         binding.questionNameApplySystemTextView.text = question.name
         binding.switchNoteAnswer.setOnClickListener {
             if (binding.switchNoteAnswer.isChecked) {
@@ -59,12 +65,15 @@ class AnswerQuestionFragment : Fragment() {
     private fun setListeners() {
         binding.saveAnswerApplySystemEditText.setOnClickListener {
             val answer = generateAnswer()
+            answer?.index = arguments?.getInt("index")!!
             answer?.let { ans -> viewModel.saveQuestion(ans) }
             binding.root.findNavController()
                 .navigate(R.id.action_answerQuestionFragment_to_mainFragment)
         }
         binding.repeatAnswerApplySystemEditText.setOnClickListener {
-            generateAnswer()
+            val answer = generateAnswer()
+            answer?.index = arguments?.getInt("index")!!
+            answer?.let { ans -> viewModel.saveQuestion(ans) }
             binding.root.findNavController().navigate(
                 R.id.action_answerQuestionFragment_to_applyCertificationFragment,
                 generateBundle()

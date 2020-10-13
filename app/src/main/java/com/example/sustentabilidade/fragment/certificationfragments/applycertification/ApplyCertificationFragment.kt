@@ -108,6 +108,7 @@ class ApplyCertificationFragment : Fragment() {
         val bundle = Bundle()
         bundle.putString("certificationID", certification.id)
         bundle.putString("question", certification.getQuestion(list[p])!!.id)
+        bundle.putInt("index", certification.getQuestion(list[p])!!.index)
         bundle.putString("farmCode", arguments?.getString("farmCode")!!)
         return bundle
     }

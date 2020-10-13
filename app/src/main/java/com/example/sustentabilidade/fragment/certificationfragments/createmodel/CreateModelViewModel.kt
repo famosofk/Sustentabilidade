@@ -60,6 +60,7 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
                 val question = Question(name)
                 question.type = type
                 question.parent = parent
+                question.index = certification.questionList.size
                 if (weight.isNotEmpty()) {
                     question.weight = weight.toFloat()
                 }

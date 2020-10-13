@@ -48,7 +48,6 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
                 viewModel.turnRepetBackToFalse()
                 binding.weightIndicatorSignIn.text.clear()
                 binding.defineWeightSwitch.isChecked = false
-                binding.indicatorTypeRadioGroup.clearCheck()
                 binding.weightIndicatorSignIn.visibility = View.GONE
             }
         })
@@ -73,7 +72,6 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
             if (arguments?.getString("type")!! == "Indicador") {
                 binding.indicatorTypeTextView.visibility = View.VISIBLE
                 binding.defineWeightSwitch.visibility = View.VISIBLE
-                binding.indicatorTypeRadioGroup.visibility = View.VISIBLE
                 binding.defineWeightSwitch.setOnClickListener(this)
             }
         }
@@ -99,18 +97,13 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
             if (p0?.id == R.id.finishSignInButton) {
                 command = 1
             }
-            if (binding.booleanTypeIndicator.isChecked) {
-                indicatorType = Question.BOOLEAN_INDICATOR_TYPE
-            } else {
-                indicatorType = Question.VALUE_INDICATOR_TYPE
-            }
             viewModel.createModel(
                 arguments?.getString("type")!!,
                 binding.inputNameSignIn.text.toString(),
                 parent,
                 command = command,
                 binding.weightIndicatorSignIn.text.toString(),
-                indicatorType
+                Question.BOOLEAN_INDICATOR_TYPE
             )
         }
     }

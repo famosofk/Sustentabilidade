@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <RadioButton
                 android:id="@+id/trueRadioButtonAnswerQuestion"
@@ -58,27 +58,6 @@
                 android:text="@string/non_applicable_term" />
         </RadioGroup>
 
-        <TextView
-            android:id="@+id/textViewValueAnswer"
-            style="@style/edittext_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/value_term"
-            android:visibility="gone" />
-
-        <EditText
-            android:id="@+id/degreeValueApplySystemEditText"
-            style="@style/editText_style"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:ems="10"
-            android:inputType="numberDecimal"
-            android:importantForAutofill="no"
-            android:textAlignment="center"
-            android:visibility="gone" />
-
         <Switch
             android:id="@+id/switchNoteAnswer"
             android:layout_width="match_parent"
@@ -89,7 +68,8 @@
             android:id="@+id/noteLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
                 style="@style/edittext_title"

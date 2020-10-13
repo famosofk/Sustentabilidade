@@ -11,6 +11,6 @@ open class AnswerList : RealmObject() {
     var answeredQuestions = 0
     var answerList = RealmList<Answer>()
     var pontuation = 0.0
-    var finished = false
+    var finished = "0"
 
 }
