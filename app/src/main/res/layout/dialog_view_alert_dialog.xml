@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
@@ -15,12 +16,16 @@
         android:padding="32dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/createNewAttribute"
+            android:id="@+id/directAnswerMode"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:clickable="true"
-            app:srcCompat="@drawable/ic_baseline_add_24" />
+            android:contentDescription="@string/direct_description"
+            android:focusable="true"
+            app:maxImageSize="48dp"
+            app:srcCompat="@drawable/ic_baseline_arrow_circle_down_24"
+            tools:ignore="NestedWeights" />
     </LinearLayout>
 
     <LinearLayout
@@ -32,12 +37,18 @@
         android:padding="32dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/manageattributes"
+            android:id="@+id/treeAnswerMode"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:clickable="true"
-            app:srcCompat="@drawable/ic_baseline_build_24" />
+            android:contentDescription="@string/tree_description"
+            android:focusable="true"
+            android:tint="@android:color/white"
+            android:tintMode="src_in"
+            app:maxImageSize="32dp"
+            app:srcCompat="@drawable/ic_baseline_account_tree_24"
+            tools:ignore="NestedWeights" />
     </LinearLayout>
 
 </LinearLayout>

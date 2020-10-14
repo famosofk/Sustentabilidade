@@ -58,6 +58,11 @@
     <string name="answer_other_intro">Responder outra</string>
     <string name="prazo_term">Prazo</string>
     <string name="notes_intro">"Necessário preencher observação e data."</string>
+    <string name="layout_answer_mode">"Escolha o modo de resposta:"</string>
+    <string name="direct_description">All questions as a list to answer</string>
+    <string name="tree_description">Tree question to select once a time to answer</string>
+    <string name="add_note">Adicionar observação?</string>
+    <string name="level_value_hint">Porcentagem requerida para o nível</string>
 
     <string-array name="models">
         <item>Dimensão</item>

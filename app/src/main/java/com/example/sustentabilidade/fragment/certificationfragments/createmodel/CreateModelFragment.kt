@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.FragmentCreateModelBinding
-import com.example.sustentabilidade.models.certificationmodels.Question
 
 class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnClickListener {
 
@@ -70,9 +69,11 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
             binding.parentModelSpinner.adapter = adapter
             binding.parentModelSpinner.onItemSelectedListener = this
             if (arguments?.getString("type")!! == "Indicador") {
-                binding.indicatorTypeTextView.visibility = View.VISIBLE
                 binding.defineWeightSwitch.visibility = View.VISIBLE
                 binding.defineWeightSwitch.setOnClickListener(this)
+            } else if (arguments?.getString("type")!! == "Níveis") {
+                binding.levelValueSignIn.visibility = View.VISIBLE
+                binding.vinculationLayout.visibility = View.GONE
             }
         }
         binding.finishSignInButton.setOnClickListener(this)
@@ -103,7 +104,7 @@ class CreateModelFragment : Fragment(), AdapterView.OnItemSelectedListener, View
                 parent,
                 command = command,
                 binding.weightIndicatorSignIn.text.toString(),
-                Question.BOOLEAN_INDICATOR_TYPE
+                binding.levelValueSignIn.text.toString()
             )
         }
     }

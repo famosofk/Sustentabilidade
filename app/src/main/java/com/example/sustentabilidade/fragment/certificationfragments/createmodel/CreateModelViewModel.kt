@@ -37,7 +37,7 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
         parent: String = "",
         command: Int = 0,
         weight: String,
-        type: Int
+        levelValue: String
     ) {
         realm.beginTransaction()
         when (key) {
@@ -58,16 +58,19 @@ class CreateModelViewModel(application: Application) : AndroidViewModel(applicat
             }
             modelType[3] -> {
                 val question = Question(name)
-                question.type = type
                 question.parent = parent
                 question.index = certification.questionList.size
                 if (weight.isNotEmpty()) {
                     question.weight = weight.toFloat()
                 }
                 certification.addItem(question)
-
             }
-
+            modelType[4] -> {
+                val level = Level()
+                level.minPontuation = levelValue.toInt()
+                level.name = name
+                certification.addItem(level)
+            }
         }
         realm.commitTransaction()
         if (command == 0) {

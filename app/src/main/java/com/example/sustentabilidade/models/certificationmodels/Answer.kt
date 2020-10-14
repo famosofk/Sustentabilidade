@@ -9,7 +9,6 @@ open class Answer : RealmObject() {
     var index = 0
     var note = ""
     var parentID = ""
-    var farmID = ""
     var value = 0f
     var deliveryDate = ""
 }

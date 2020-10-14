@@ -16,7 +16,6 @@
             style="@style/textview_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="24sp" />
 
@@ -62,7 +61,8 @@
             android:id="@+id/switchNoteAnswer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Adicionar observação?" />
+            android:text="@string/add_note"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <LinearLayout
             android:id="@+id/noteLinearLayout"
@@ -85,7 +85,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                tools:ignore="LabelFor" />
 
             <TextView
                 style="@style/edittext_title"
@@ -101,7 +103,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:ems="10"
-                android:inputType="date" />
+                android:autofillHints="no"
+                android:inputType="date"
+                tools:ignore="LabelFor" />
         </LinearLayout>
 
         <LinearLayout
@@ -110,7 +114,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/repeatAnswerApplySystemEditText"
+                android:id="@+id/repeatAnswerApplySystemButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -126,7 +130,7 @@
                 tools:ignore="ButtonStyle" />
 
             <Button
-                android:id="@+id/saveAnswerApplySystemEditText"
+                android:id="@+id/saveAnswerApplySystemButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

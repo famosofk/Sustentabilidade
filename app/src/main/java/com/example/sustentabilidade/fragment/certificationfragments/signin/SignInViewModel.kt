@@ -22,11 +22,18 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
         return false
     }
 
+    fun verifyLevel(): Boolean {
+        if (certification.levelNumber > 0) {
+            return true
+        }
+        return false
+    }
+
     fun verifyTheme(): Boolean {
         if (verifyDominion()) {
-                if (certification.themeNumber > 0) {
-                    return true
-                }
+            if (certification.themeNumber > 0) {
+                return true
+            }
         }
         return false
     }

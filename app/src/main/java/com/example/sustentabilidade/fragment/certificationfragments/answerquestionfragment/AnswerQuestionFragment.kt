@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.FragmentAnswerQuestionBinding
-import com.example.sustentabilidade.helpers.ScreenHelper
 import com.example.sustentabilidade.models.certificationmodels.Answer
 import com.example.sustentabilidade.models.certificationmodels.Question
 
@@ -18,9 +17,8 @@ class AnswerQuestionFragment : Fragment() {
 
     private lateinit var binding: FragmentAnswerQuestionBinding
     private lateinit var viewModel: AnswerQuestionViewModel
-
-    //TODO we need to save answer
-
+    private lateinit var question: Question
+    private var repeat: Boolean? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,30 +27,16 @@ class AnswerQuestionFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_answer_question, container, false)
         viewModel = ViewModelProvider(this).get(AnswerQuestionViewModel::class.java)
+        viewModel.initializeAnswerList(arguments?.getString("certificationID")!!)
+        question = viewModel.getQuestion(arguments?.getString("question")!!)
         setListeners()
         setObservers()
-        updateUI(viewModel.getQuestion(arguments?.getString("question")!!))
 
         return binding.root
     }
 
-    private fun setObservers() {
-        viewModel.allQuestionsAnswered.observe(viewLifecycleOwner, {
-            if (it) {
-                ScreenHelper.createToast(requireContext(), "Todas as perguntas foram respondidas")
-                viewModel.allQuestionsAnswered.value = !(viewModel.allQuestionsAnswered.value)!!
-            }
-        })
-    }
 
-    private fun updateUI(question: Question) {
-        viewModel.getAnswerList(
-            arguments?.getString("farmCode")!!,
-            arguments?.getString("certificationID")!!
-        )
-        binding.booleanOptions.visibility = View.VISIBLE
-        ScreenHelper.createToast(requireContext(), "${question.index}")
-        binding.questionNameApplySystemTextView.text = question.name
+    private fun setListeners() {
         binding.switchNoteAnswer.setOnClickListener {
             if (binding.switchNoteAnswer.isChecked) {
                 binding.noteLinearLayout.visibility = View.VISIBLE
@@ -60,56 +44,58 @@ class AnswerQuestionFragment : Fragment() {
                 binding.noteLinearLayout.visibility = View.GONE
             }
         }
-    }
-
-    private fun setListeners() {
-        binding.saveAnswerApplySystemEditText.setOnClickListener {
-            val answer = generateAnswer()
-            answer?.index = arguments?.getInt("index")!!
-            answer?.let { ans -> viewModel.saveQuestion(ans) }
-            binding.root.findNavController()
-                .navigate(R.id.action_answerQuestionFragment_to_mainFragment)
+        binding.repeatAnswerApplySystemButton.setOnClickListener {
+            viewModel.saveAnswer(generateAnswer(), true)
         }
-        binding.repeatAnswerApplySystemEditText.setOnClickListener {
-            val answer = generateAnswer()
-            answer?.index = arguments?.getInt("index")!!
-            answer?.let { ans -> viewModel.saveQuestion(ans) }
-            binding.root.findNavController().navigate(
-                R.id.action_answerQuestionFragment_to_applyCertificationFragment,
-                generateBundle()
-            )
-
+        binding.saveAnswerApplySystemButton.setOnClickListener {
+            viewModel.saveAnswer(generateAnswer(), false)
         }
     }
 
-    private fun generateAnswer(): Answer? {
+
+    private fun generateAnswer(): Answer {
         val answer = Answer()
-        answer.parentID = arguments?.getString("question")!!
-        answer.farmID = arguments?.getString("farmCode")!!
+        answer.index = question.index
+        answer.parentID = question.id
+        when {
+            binding.trueRadioButtonAnswerQuestion.isChecked -> answer.value = Question.ANSWER_POSSUI
+            binding.falseRadioButtonAnswerQuestion.isChecked -> answer.value =
+                Question.ANSWER_NAO_POSSUI
+            binding.nonApplicableRadioButtonAnswerQuestion.isChecked -> answer.value =
+                Question.ANSWER_NAO_SE_APLICA
+        }
         if (binding.switchNoteAnswer.isChecked) {
-            if (binding.noteAnswerApplySystemEditText.text.toString().isNotEmpty() &&
-                binding.dateAnswerApplySystemEditText.text.toString().isNotEmpty()
-            ) {
-                answer.note = binding.noteAnswerApplySystemEditText.text.toString()
-                answer.deliveryDate = binding.dateAnswerApplySystemEditText.text.toString()
-            } else {
-                ScreenHelper.createToast(
-                    requireContext(),
-                    resources.getString(R.string.notes_intro)
-                )
-                return null
-            }
+            answer.note = binding.noteAnswerApplySystemEditText.text.toString()
+            answer.deliveryDate = binding.dateAnswerApplySystemEditText.text.toString()
         }
         return answer
+    }
 
+    private fun setObservers() {
+        viewModel.repeat.observe(viewLifecycleOwner, {
+
+            if (it == true) {
+                binding.root.findNavController()
+                    .navigate(R.id.action_answerQuestionFragment_to_mainFragment)
+            } else if (it == false) {
+                binding.root.findNavController().navigate(
+                    R.id.action_answerQuestionFragment_to_applyCertificationFragment,
+                    generateBundle()
+                )
+            }
+
+        })
     }
 
     private fun generateBundle(): Bundle {
         val bundle = Bundle()
-        bundle.putString("certificationID", arguments?.getString("certificationID"))
-        bundle.putString("farmCode", arguments?.getString("farmCode"))
+        bundle.putString("certificationID", arguments?.getString("certificationID")!!)
+        bundle.putString("farmCode", arguments?.getString("farmCode")!!)
         return bundle
     }
+
+
+
 
 
 }

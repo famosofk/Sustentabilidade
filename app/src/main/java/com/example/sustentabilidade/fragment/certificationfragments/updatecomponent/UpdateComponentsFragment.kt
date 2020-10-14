@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.FragmentUpdateComponentsBinding
 import com.example.sustentabilidade.models.certificationmodels.Certification
-import com.example.sustentabilidade.models.certificationmodels.Question
 import io.realm.Realm
 import io.realm.kotlin.where
 
@@ -23,6 +22,7 @@ class UpdateComponentsFragment : Fragment() {
     private lateinit var realm: Realm
     private lateinit var type: String
     private lateinit var name: String
+    //TODO Refazer as operações de save and delete
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,18 +83,11 @@ class UpdateComponentsFragment : Fragment() {
         name = arguments?.getString("name")!!
         binding.updateComponentName.setText(name)
         if (type == array[3]) {
-            binding.typeSelectorUpdateComponent.visibility = View.VISIBLE
-            binding.indicatorTypeRadioGroup.visibility = View.VISIBLE
             binding.defineWeightSwitch.visibility = View.VISIBLE
             binding.weightIndicatorSignIn.visibility = View.VISIBLE
             realm.beginTransaction()
             val question = certification.getQuestion(name)!!
             realm.commitTransaction()
-            if (question.type == Question.BOOLEAN_INDICATOR_TYPE) {
-                binding.booleanTypeIndicator.isChecked = true
-            } else {
-                binding.valueTypeIndicator.isChecked = true
-            }
             if (question.weight != 1.toFloat()) {
                 binding.defineWeightSwitch.isChecked = true
                 binding.weightIndicatorSignIn.setText(question.weight.toString())

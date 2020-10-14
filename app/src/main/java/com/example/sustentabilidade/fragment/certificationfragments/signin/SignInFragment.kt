@@ -21,6 +21,8 @@ class SignInFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnCl
     private var itemType = ""
     private var certificationID = ""
 
+    //TODO remover o trecho hardcoded
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -104,6 +106,17 @@ class SignInFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnCl
                         enableNavigation(p0.id)
                     } else {
                         ScreenHelper.createToast(requireContext(), "Crie um subtema primeiro.")
+                    }
+                }
+                array[4] -> {
+                    if (p0.id == R.id.createModelButton) {
+                        enableNavigation(p0.id)
+                    } else if (p0.id == R.id.manageModelButton) {
+                        if (viewModel.verifyLevel()) {
+                            enableNavigation(p0.id)
+                        } else {
+                            ScreenHelper.createToast(requireContext(), "Crie um nível primeiro")
+                        }
                     }
                 }
                 else -> ScreenHelper.createToast(

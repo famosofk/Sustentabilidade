@@ -163,6 +163,9 @@
         <action
             android:id="@+id/action_selectFarmCertificationFragment_to_applyCertificationFragment"
             app:destination="@id/applyCertificationFragment" />
+        <action
+            android:id="@+id/action_selectFarmCertificationFragment_to_directAnswerFragment"
+            app:destination="@id/directAnswerFragment" />
     </fragment>
     <fragment
         android:id="@+id/applyCertificationFragment"
@@ -185,5 +188,10 @@
             android:id="@+id/action_answerQuestionFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/directAnswerFragment"
+        android:name="com.example.sustentabilidade.DirectAnswerFragment"
+        android:label="fragment_direct_answer"
+        tools:layout="@layout/fragment_direct_answer" />
 
 </navigation>

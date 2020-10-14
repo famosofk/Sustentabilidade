@@ -1,5 +1,6 @@
 package com.example.sustentabilidade.fragment.certificationfragments.selectfarmcertitification
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.example.sustentabilidade.databinding.FragmentSelectFarmCertificationB
 import com.example.sustentabilidade.fragment.certificationfragments.managecertification.CreateCertificationItemClickListener
 import com.example.sustentabilidade.helpers.ScreenHelper
 import com.example.sustentabilidade.models.certificationmodels.Certification
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import io.realm.Realm
 import io.realm.kotlin.where
 
@@ -82,15 +84,39 @@ class SelectFarmCertificationFragment : Fragment(), AdapterView.OnItemSelectedLi
         return object : CreateCertificationItemClickListener {
             override fun onClick(p: Int) {
                 if (farmCode != "") {
-                    binding.root.findNavController()
-                        .navigate(
-                            R.id.action_selectFarmCertificationFragment_to_applyCertificationFragment,
-                            createBundle(p)
-                        )
+                    createAlertDialog(p)
                 } else {
                     ScreenHelper.createToast(requireContext(), "Selecione uma fazenda.")
                 }
             }
+        }
+    }
+
+    private fun createAlertDialog(p: Int) {
+        val mDialogView =
+            LayoutInflater.from(context).inflate(R.layout.dialog_view_alert_dialog, null)
+        val directButton: FloatingActionButton = mDialogView.findViewById(R.id.directAnswerMode)
+        val treeButton: FloatingActionButton = mDialogView.findViewById(R.id.treeAnswerMode)
+
+
+        val mBuilder = AlertDialog.Builder(context)
+            .setView(mDialogView)
+            .setTitle(getString(R.string.layout_answer_mode))
+            .create()
+        mBuilder.show()
+        directButton.setOnClickListener {
+            binding.root.findNavController()
+                .navigate(
+                    R.id.action_selectFarmCertificationFragment_to_directAnswerFragment,
+                    createBundle(p)
+                )
+        }
+        treeButton.setOnClickListener {
+            binding.root.findNavController()
+                .navigate(
+                    R.id.action_selectFarmCertificationFragment_to_applyCertificationFragment,
+                    createBundle(p)
+                )
         }
     }
 

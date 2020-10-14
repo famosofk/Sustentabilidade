@@ -23,8 +23,7 @@ open class Certification : RealmObject() {
     var questionNumber = 0
     var levelList = RealmList<Level>()
     var levelNameList = RealmList<String>()
-
-    //Bring theme, subtheme and question to here
+    var levelNumber = 0
 
     companion object {
         const val DOMINION = 0
@@ -36,11 +35,11 @@ open class Certification : RealmObject() {
 
     fun getAllNames(parameter: Int): List<String> {
         when (parameter) {
-            Certification.DOMINION -> return questionNameList
-            Certification.THEME -> return themeNameList
-            Certification.SUB_THEME -> return subThemeNameList
-            Certification.QUESTION -> return questionNameList
-            Certification.LEVEL -> return levelNameList
+            DOMINION -> return questionNameList
+            THEME -> return themeNameList
+            SUB_THEME -> return subThemeNameList
+            QUESTION -> return questionNameList
+            LEVEL -> return levelNameList
         }
         return listOf()
     }
