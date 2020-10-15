@@ -124,7 +124,6 @@ open class Certification : RealmObject() {
         Realm.getDefaultInstance().where<Dominion>().contains("id", dominion.id).findAll()
             .deleteAllFromRealm()
         dominionNumber--
-
     }
 
     fun removeItem(level: Level) {

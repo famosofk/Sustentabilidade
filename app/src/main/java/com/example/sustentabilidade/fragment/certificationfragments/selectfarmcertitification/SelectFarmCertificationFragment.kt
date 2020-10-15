@@ -110,6 +110,7 @@ class SelectFarmCertificationFragment : Fragment(), AdapterView.OnItemSelectedLi
                     R.id.action_selectFarmCertificationFragment_to_directAnswerFragment,
                     createBundle(p)
                 )
+            mBuilder.dismiss()
         }
         treeButton.setOnClickListener {
             binding.root.findNavController()
@@ -117,6 +118,7 @@ class SelectFarmCertificationFragment : Fragment(), AdapterView.OnItemSelectedLi
                     R.id.action_selectFarmCertificationFragment_to_applyCertificationFragment,
                     createBundle(p)
                 )
+            mBuilder.dismiss()
         }
     }
 

@@ -29,6 +29,7 @@ class AnswerQuestionFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(AnswerQuestionViewModel::class.java)
         viewModel.initializeAnswerList(arguments?.getString("certificationID")!!)
         question = viewModel.getQuestion(arguments?.getString("question")!!)
+        binding.questionNameApplySystemTextView.text = question.name
         setListeners()
         setObservers()
 
@@ -45,10 +46,10 @@ class AnswerQuestionFragment : Fragment() {
             }
         }
         binding.repeatAnswerApplySystemButton.setOnClickListener {
-            viewModel.saveAnswer(generateAnswer(), true)
+            viewModel.saveAnswer(generateAnswer(), false)
         }
         binding.saveAnswerApplySystemButton.setOnClickListener {
-            viewModel.saveAnswer(generateAnswer(), false)
+            viewModel.saveAnswer(generateAnswer(), true)
         }
     }
 
