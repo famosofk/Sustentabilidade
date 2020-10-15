@@ -2,6 +2,7 @@ package com.example.sustentabilidade.fragment.certificationfragments.applycertif
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ class ApplyCertificationFragment : Fragment() {
 
     private lateinit var binding: FragmentApplyCertificationBinding
     private val adapter = StringAdapter()
+    private var parentName = ""
     private var type = ""
     private val list = mutableListOf<String>()
     private lateinit var certification: Certification
@@ -66,23 +68,34 @@ class ApplyCertificationFragment : Fragment() {
     }
 
     private fun submitListAdapter(p: Int) {
+        parentName = list[p]
         list.clear()
         when (type) {
             array[0] -> {
-                list.addAll(certification.themeNameList)
+
+                for (theme in certification.themeList) {
+                    if (theme.parent == parentName)
+                        list.add(theme.name)
+                    else Log.e("teste: ", "" + theme.parent)
+                }
                 type = array[1]
+                Log.e("parent", parentName)
             }
             array[1] -> {
-                list.addAll(certification.subThemeNameList)
+                for (subtheme in certification.subThemeList)
+                    if (subtheme.parent == parentName)
+                        list.add(subtheme.name)
                 type = array[2]
             }
             array[2] -> {
-                list.addAll(certification.questionNameList)
+                for (question in certification.questionList)
+                    if (question.parent == parentName)
+                        list.add(question.name)
                 type = array[3]
             }
         }
-        adapter.submitList(null)
-        adapter.submitList(list)
+        // adapter.submitList(list)
+        adapter.notifyDataSetChanged()
         binding.toolbar2.title = "${certification.name}: $type"
 
 
