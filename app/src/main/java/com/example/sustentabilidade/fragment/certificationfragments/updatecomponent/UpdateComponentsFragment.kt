@@ -40,38 +40,48 @@ class UpdateComponentsFragment : Fragment() {
     }
 
     private fun clickListeners() {
-        realm.beginTransaction()
         binding.deleteEditButton.setOnClickListener {
+            realm.beginTransaction()
             when (type) {
-                array[0] -> {
-                    certification.removeItem(certification.getDominion(name)!!)
-                }
-                array[1] -> {
-                    certification.removeItem(certification.getTheme(name)!!)
-                }
-                array[2] -> {
-                    certification.removeItem(certification.getSubTheme(name)!!)
-                }
-                array[3] -> {
-                    certification.removeItem(certification.getQuestion(name)!!)
-                }
+                array[0] -> certification.removeItem(certification.getDominion(name)!!)
+
+                array[1] -> certification.removeItem(certification.getTheme(name)!!)
+
+                array[2] -> certification.removeItem(certification.getSubTheme(name)!!)
+
+                array[3] -> certification.removeItem(certification.getQuestion(name)!!)
+
+                array[4] -> certification.removeItem(certification.getQuestion(name)!!)
             }
+            realm.commitTransaction()
         }
         binding.finishEditButton.setOnClickListener {
+            realm.beginTransaction()
             when (type) {
-                array[0] -> certification.getDominion(name)?.name =
-                    binding.updateComponentName.text.toString()
-                array[1] -> certification.getTheme(name)?.name =
-                    binding.updateComponentName.text.toString()
-                array[2] -> certification.getSubTheme(name)?.name =
-                    binding.updateComponentName.text.toString()
-                array[3] -> {
-                    certification.getQuestion(name)?.name =
-                        binding.updateComponentName.text.toString()
+                array[0] -> {
+                    val dom = certification.getDominion(name)!!
+                    dom.name = binding.updateComponentName.text.toString()
+                    realm.copyToRealmOrUpdate(dom)
                 }
+                array[1] -> {
+                    val theme = certification.getTheme(name)!!
+                    theme.name = binding.updateComponentName.text.toString()
+                    realm.copyToRealmOrUpdate(theme)
+                }
+                array[2] -> {
+                    val subtheme = certification.getSubTheme(name)!!
+                    subtheme.name = binding.updateComponentName.text.toString()
+                    realm.copyToRealmOrUpdate(subtheme)
+                }
+                array[3] -> {
+                    val question = certification.getQuestion(name)!!
+                    question.name = binding.updateComponentName.text.toString()
+                    realm.copyToRealmOrUpdate(question)
+                }
+
             }
+            realm.commitTransaction()
         }
-        realm.commitTransaction()
     }
 
 
