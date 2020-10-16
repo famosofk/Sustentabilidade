@@ -70,6 +70,9 @@
         <action
             android:id="@+id/action_certificationsFragment_to_selectFarmCertificationFragment"
             app:destination="@id/selectFarmCertificationFragment" />
+        <action
+            android:id="@+id/action_certificationsFragment_to_searchCertificationFragment"
+            app:destination="@id/searchCertificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/createFarmFragment"
@@ -193,5 +196,19 @@
         android:name="com.example.sustentabilidade.DirectAnswerFragment"
         android:label="fragment_direct_answer"
         tools:layout="@layout/fragment_direct_question" />
+    <fragment
+        android:id="@+id/searchCertificationFragment"
+        android:name="com.example.sustentabilidade.SearchCertificationFragment"
+        android:label="fragment_search_certification"
+        tools:layout="@layout/fragment_search_certification">
+        <action
+            android:id="@+id/action_searchCertificationFragment_to_visualizeCertificationFragment"
+            app:destination="@id/visualizeCertificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/visualizeCertificationFragment"
+        android:name="com.example.sustentabilidade.VisualizeCertificationFragment"
+        android:label="fragment_visualize_certification"
+        tools:layout="@layout/fragment_visualize_certification" />
 
 </navigation>
