@@ -33,13 +33,15 @@ class CertificationsFragment : Fragment() {
     }
 
     private fun enableNavigation() {
+        binding.searchCertificationTextView.setOnClickListener {
+            binding.root.findNavController()
+                .navigate(R.id.action_certificationsFragment_to_searchFragment)
+        }
         binding.manageCertificationTextView.setOnClickListener {
             binding.root.findNavController()
                 .navigate(R.id.action_certificationsFragment_to_manageCertificationFragment)
         }
-
         binding.applyCertificationTextView.setOnClickListener {
-
             val realm = Realm.getDefaultInstance()
             val results = realm.where<Farm>().findAll()
             if (results.size > 0) {
@@ -53,6 +55,5 @@ class CertificationsFragment : Fragment() {
             }
         }
     }
-
 
 }

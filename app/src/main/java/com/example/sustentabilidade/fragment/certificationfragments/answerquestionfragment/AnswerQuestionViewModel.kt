@@ -41,6 +41,7 @@ class AnswerQuestionViewModel(application: Application) : AndroidViewModel(appli
         } else {
             answerList = AnswerList()
             answerList.certificationID = id
+            answerList.farmCode = "Name"
             realm.beginTransaction()
             realm.copyToRealmOrUpdate(answerList)
             realm.commitTransaction()
