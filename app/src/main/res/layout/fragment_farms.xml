@@ -61,6 +61,23 @@
                 android:textColor="@android:color/white"
                 android:textSize="32sp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="?android:attr/listDivider"
+                android:backgroundTint="@android:color/white" />
+
+            <TextView
+                android:id="@+id/visualizeFarmNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="@string/visualize_farm_intro"
+                android:textColor="@android:color/white"
+                android:textSize="32sp" />
+
         </LinearLayout>
 
         <ProgressBar

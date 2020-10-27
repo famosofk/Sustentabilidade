@@ -64,7 +64,6 @@ class ApplyCertificationFragment : Fragment() {
             list.addAll(certification.dominionNameList)
         }
         adapter.submitList(list)
-
     }
 
     private fun submitListAdapter(p: Int) {
@@ -72,7 +71,6 @@ class ApplyCertificationFragment : Fragment() {
         list.clear()
         when (type) {
             array[0] -> {
-
                 for (theme in certification.themeList) {
                     if (theme.parent == parentName)
                         list.add(theme.name)
@@ -94,11 +92,8 @@ class ApplyCertificationFragment : Fragment() {
                 type = array[3]
             }
         }
-        // adapter.submitList(list)
         adapter.notifyDataSetChanged()
         binding.toolbar2.title = "${certification.name}: $type"
-
-
     }
 
     private fun createRecyclerItemClickListener(): CreateCertificationItemClickListener {

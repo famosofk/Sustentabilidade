@@ -107,6 +107,15 @@ open class Certification : RealmObject() {
         return null
     }
 
+    fun getQuestion(index: Int): Question? {
+        questionList.forEach {
+            if (it.index == index) {
+                return it
+            }
+        }
+        return null
+    }
+
     fun getLevel(name: String): Level? {
         levelList.forEach {
             if (it.name == name) {

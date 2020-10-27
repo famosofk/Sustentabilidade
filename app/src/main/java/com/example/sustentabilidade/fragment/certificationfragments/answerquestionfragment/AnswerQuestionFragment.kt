@@ -27,7 +27,10 @@ class AnswerQuestionFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_answer_question, container, false)
         viewModel = ViewModelProvider(this).get(AnswerQuestionViewModel::class.java)
-        viewModel.initializeAnswerList(arguments?.getString("certificationID")!!)
+        viewModel.initializeAnswerList(
+            arguments?.getString("certificationID")!!,
+            arguments?.getString("farmCode")!!
+        )
         question = viewModel.getQuestion(arguments?.getString("question")!!)
         binding.questionNameApplySystemTextView.text = question.name
         setListeners()

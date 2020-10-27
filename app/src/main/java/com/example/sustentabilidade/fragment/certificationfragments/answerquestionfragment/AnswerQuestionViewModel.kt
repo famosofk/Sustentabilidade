@@ -30,7 +30,7 @@ class AnswerQuestionViewModel(application: Application) : AndroidViewModel(appli
         repeat.value = repeatValue
     }
 
-    fun initializeAnswerList(id: String) {
+    fun initializeAnswerList(id: String, farmCode: String) {
         certification = realm.where<Certification>().contains("id", id).findFirst()!!
         val results =
             realm.where<AnswerList>().contains("certificationID", id).contains("finished", "0")
@@ -41,7 +41,7 @@ class AnswerQuestionViewModel(application: Application) : AndroidViewModel(appli
         } else {
             answerList = AnswerList()
             answerList.certificationID = id
-            answerList.farmCode = "Name"
+            answerList.farmCode = farmCode
             realm.beginTransaction()
             realm.copyToRealmOrUpdate(answerList)
             realm.commitTransaction()
