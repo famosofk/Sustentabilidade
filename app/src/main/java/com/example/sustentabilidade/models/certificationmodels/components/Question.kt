@@ -1,9 +1,10 @@
-package com.example.sustentabilidade.models.certificationmodels
+package com.example.sustentabilidade.models.certificationmodels.components
 
 import io.realm.RealmObject
+import java.io.Serializable
 import java.util.*
 
-open class Question(var name: String = "") : RealmObject() {
+open class Question(var name: String = "") : RealmObject(), Serializable {
     var id = UUID.randomUUID().toString()
     var index = 0
     var weight = 1f

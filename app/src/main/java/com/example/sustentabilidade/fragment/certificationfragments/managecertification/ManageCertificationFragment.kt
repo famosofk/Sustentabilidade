@@ -32,11 +32,12 @@ class ManageCertificationFragment : Fragment() {
             container,
             false
         )
+
         viewModel = ViewModelProvider(this).get(ManageCertificationViewModel::class.java)
+        viewModel.copyCertificationFromCloud()
         initializingRecyclerView()
         enableListeners()
         enableObservers()
-        viewModel.getList()
 
         return binding.root
     }
@@ -54,8 +55,6 @@ class ManageCertificationFragment : Fragment() {
         adapter.attachListener(listener)
         binding.certificationRecycler.adapter = adapter
         getElements()
-
-
     }
 
     private fun getBundle(p: Int): Bundle {
@@ -70,7 +69,10 @@ class ManageCertificationFragment : Fragment() {
         elements.clear()
         val realm = Realm.getDefaultInstance()
         elements.addAll(realm.where<Certification>().findAll())
-        viewModel.getList()
+        adapter.submitList(null)
+        adapter.submitList(elements)
+        viewModel.turnBackUpdatedToFalse()
+
     }
 
     private fun enableObservers() {
@@ -79,14 +81,11 @@ class ManageCertificationFragment : Fragment() {
                 binding.editTextTitleCreateCertificate.text.clear()
                 viewModel.turnBackSavedToFalse()
                 getElements()
-
             }
         })
         viewModel.mUpdatedList.observe(viewLifecycleOwner, {
             if (it) {
-                adapter.submitList(null)
-                adapter.submitList(elements)
-                viewModel.turnBackUpdatedToFalse()
+                getElements()
             }
         })
     }

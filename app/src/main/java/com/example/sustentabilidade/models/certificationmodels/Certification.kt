@@ -1,5 +1,6 @@
 package com.example.sustentabilidade.models.certificationmodels
 
+import com.example.sustentabilidade.models.certificationmodels.components.*
 import io.realm.Realm
 import io.realm.RealmList
 import io.realm.RealmObject
@@ -31,6 +32,48 @@ open class Certification : RealmObject() {
         const val SUB_THEME = 2
         const val QUESTION = 3
         const val LEVEL = 4
+
+        fun createFromFirebase(firebase: CertificationFirebase): Certification {
+            val certification = Certification()
+            certification.name = firebase.name
+            certification.id = firebase.id
+            certification.dominionNumber = firebase.dominionNumber
+            certification.themeNumber = firebase.themeNumber
+            certification.subThemeNumber = firebase.subThemeNumber
+            certification.questionNumber = firebase.questionNumber
+            firebase.dominionList.forEach {
+                val dominion = Dominion()
+                dominion.name = it.name
+                dominion.id = it.id
+                certification.addItem(dominion)
+            }
+            firebase.themeList.forEach {
+                val theme = Theme()
+                theme.name = it.name
+                theme.id = it.id
+                certification.addItem(theme)
+            }
+            firebase.subThemeList.forEach {
+                val subTheme = SubTheme()
+                subTheme.name = it.name
+                subTheme.id = it.id
+                certification.addItem(subTheme)
+            }
+            firebase.questionList.forEach {
+                val question = Question()
+                question.name = it.name
+                question.id = it.id
+                question.index = it.index
+                question.parent = it.parent
+                certification.addItem(question)
+            }
+            certification.dominionNameList.addAll(firebase.dominionNameList)
+            certification.themeNameList.addAll(firebase.themeNameList)
+            certification.subThemeNameList.addAll(firebase.subThemeNameList)
+            certification.questionNameList.addAll(firebase.questionNameList)
+            certification.levelNameList.addAll(firebase.levelNameList)
+            return certification
+        }
     }
 
     fun getAllNames(parameter: Int): List<String> {

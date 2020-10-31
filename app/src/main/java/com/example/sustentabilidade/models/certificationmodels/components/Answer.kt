@@ -1,4 +1,4 @@
-package com.example.sustentabilidade.models.certificationmodels
+package com.example.sustentabilidade.models.certificationmodels.components
 
 import io.realm.RealmObject
 import java.util.*

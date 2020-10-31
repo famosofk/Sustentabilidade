@@ -3,10 +3,10 @@ package com.example.sustentabilidade.fragment.certificationfragments.answerquest
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.example.sustentabilidade.models.certificationmodels.Answer
 import com.example.sustentabilidade.models.certificationmodels.AnswerList
 import com.example.sustentabilidade.models.certificationmodels.Certification
-import com.example.sustentabilidade.models.certificationmodels.Question
+import com.example.sustentabilidade.models.certificationmodels.components.Answer
+import com.example.sustentabilidade.models.certificationmodels.components.Question
 import io.realm.Realm
 import io.realm.kotlin.where
 

@@ -1,5 +1,6 @@
 package com.example.sustentabilidade.models.certificationmodels
 
+import com.example.sustentabilidade.models.certificationmodels.components.Answer
 import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

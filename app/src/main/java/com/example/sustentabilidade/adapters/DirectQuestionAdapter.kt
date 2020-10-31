@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.DirectListAnswerLayoutBinding
-import com.example.sustentabilidade.models.certificationmodels.Question
+import com.example.sustentabilidade.models.certificationmodels.components.Question
 
 class DirectQuestionAdapter :
     ListAdapter<Question, DirectQuestionAdapter.ViewHolder>(QuestionDiff()) {

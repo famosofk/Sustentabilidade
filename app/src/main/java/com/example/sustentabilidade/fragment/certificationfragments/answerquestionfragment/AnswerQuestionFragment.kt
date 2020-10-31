@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.FragmentAnswerQuestionBinding
-import com.example.sustentabilidade.models.certificationmodels.Answer
-import com.example.sustentabilidade.models.certificationmodels.Question
+import com.example.sustentabilidade.models.certificationmodels.components.Answer
+import com.example.sustentabilidade.models.certificationmodels.components.Question
 
 class AnswerQuestionFragment : Fragment() {
 

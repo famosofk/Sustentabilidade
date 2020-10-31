@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sustentabilidade.R
 import com.example.sustentabilidade.databinding.ItemQuestionVisualizeAnswerLayoutBinding
-import com.example.sustentabilidade.models.certificationmodels.Answer
 import com.example.sustentabilidade.models.certificationmodels.Certification
-import com.example.sustentabilidade.models.certificationmodels.Question
+import com.example.sustentabilidade.models.certificationmodels.components.Answer
+import com.example.sustentabilidade.models.certificationmodels.components.Question
 
 class VisualizeCertificationAdapter :
     ListAdapter<Answer, VisualizeCertificationAdapter.ViewHolder>(AnswerDiff()) {
