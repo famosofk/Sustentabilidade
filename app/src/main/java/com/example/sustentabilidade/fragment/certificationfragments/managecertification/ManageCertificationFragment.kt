@@ -34,11 +34,10 @@ class ManageCertificationFragment : Fragment() {
         )
 
         viewModel = ViewModelProvider(this).get(ManageCertificationViewModel::class.java)
-        viewModel.copyCertificationFromCloud()
         initializingRecyclerView()
         enableListeners()
         enableObservers()
-
+        viewModel.getList()
         return binding.root
     }
 

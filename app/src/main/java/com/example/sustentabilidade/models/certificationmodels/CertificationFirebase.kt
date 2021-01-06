@@ -34,14 +34,15 @@ class CertificationFirebase {
                 certificationFirebase.themeList.add(
                     ThemeFirebase(
                         it.name,
-                        it.id
+                        it.id,
+                        it.parent
                     )
                 )
             }
             certification.themeNameList.forEach { certificationFirebase.themeNameList.add(it) }
             certification.subThemeList.forEach {
                 certificationFirebase.subThemeList.add(
-                    SubThemeFirebase(it.name, it.id)
+                    SubThemeFirebase(it.name, it.id, it.parent)
                 )
             }
             certification.subThemeNameList.forEach { certificationFirebase.subThemeNameList.add(it) }

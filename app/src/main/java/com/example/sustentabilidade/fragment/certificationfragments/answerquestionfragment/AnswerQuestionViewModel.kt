@@ -24,6 +24,8 @@ class AnswerQuestionViewModel(application: Application) : AndroidViewModel(appli
         answerList.answeredQuestions = answerList.answerList.size
         if (answerList.answeredQuestions == certification.questionNameList.size) {
             answerList.finished = "1"
+            answerList.sendAnswerListToCloud()
+            //sendAnswerListToCloud(answerList)
         }
         realm.copyToRealmOrUpdate(answerList)
         realm.commitTransaction()
@@ -47,6 +49,15 @@ class AnswerQuestionViewModel(application: Application) : AndroidViewModel(appli
             realm.commitTransaction()
         }
     }
+
+//    fun sendAnswerListToCloud(answerList : AnswerList){
+//        val sdf = SimpleDateFormat("dd-M-yyyy hh:mm:ss")
+//        val currentDate = sdf.format(Date())
+//        answerList.creationDate = currentDate
+//        val answerListFirebase = AnswerListFirebase.createFirebaseAnswerList(answerList)
+//        val databaseReference = Firebase.database.reference.child("respostas").child(answerList.certificationID).child(currentDate.trim())
+//        databaseReference.setValue(answerListFirebase)
+//    }
 
     fun getQuestion(id: String): Question {
         return realm.where<Question>().contains("id", id).findFirst()!!

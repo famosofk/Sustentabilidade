@@ -1,5 +1,6 @@
 package com.example.sustentabilidade.models.certificationmodels
 
+import android.util.Log
 import com.example.sustentabilidade.models.certificationmodels.components.*
 import io.realm.Realm
 import io.realm.RealmList
@@ -48,18 +49,23 @@ open class Certification : RealmObject() {
                 certification.addItem(dominion)
             }
             firebase.themeList.forEach {
+                Log.e("theme: ", it.name)
                 val theme = Theme()
                 theme.name = it.name
                 theme.id = it.id
+                theme.parent = it.parent
                 certification.addItem(theme)
             }
             firebase.subThemeList.forEach {
+                Log.e("subtheme: ", it.name)
                 val subTheme = SubTheme()
+                subTheme.parent = it.parent
                 subTheme.name = it.name
                 subTheme.id = it.id
                 certification.addItem(subTheme)
             }
             firebase.questionList.forEach {
+                Log.e("question ", it.name)
                 val question = Question()
                 question.name = it.name
                 question.id = it.id
@@ -67,11 +73,6 @@ open class Certification : RealmObject() {
                 question.parent = it.parent
                 certification.addItem(question)
             }
-            certification.dominionNameList.addAll(firebase.dominionNameList)
-            certification.themeNameList.addAll(firebase.themeNameList)
-            certification.subThemeNameList.addAll(firebase.subThemeNameList)
-            certification.questionNameList.addAll(firebase.questionNameList)
-            certification.levelNameList.addAll(firebase.levelNameList)
             return certification
         }
     }

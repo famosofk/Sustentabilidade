@@ -60,9 +60,13 @@ class ApplyCertificationFragment : Fragment() {
         binding.applyCertificationAdapter.layoutManager = LinearLayoutManager(context)
         binding.applyCertificationAdapter.itemAnimator = null
         binding.applyCertificationAdapter.adapter = adapter
+        Log.e("Size: ", "" + list.size)
         if (list.size == 0) {
             list.addAll(certification.dominionNameList)
         }
+
+        Log.e("Size: ", "" + list.size)
+
         adapter.submitList(list)
     }
 
@@ -92,6 +96,7 @@ class ApplyCertificationFragment : Fragment() {
                 type = array[3]
             }
         }
+        list.forEach { Log.e("item: ", it) }
         adapter.notifyDataSetChanged()
         binding.toolbar2.title = "${certification.name}: $type"
     }
